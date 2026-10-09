@@ -7,4 +7,4 @@ Red social en consola construida bajo el paradigma de **Programación Orientada 
 * **Consumo de recursos de memoria:** Optimización mediante asignación y liberación dinámica de recursos.
 * **Tiempo de ejecución:** Operaciones de alta velocidad mediante el uso eficiente de estructuras enlazadas.
 
-[📹 Ver Video Demostrativo (Próximamente)](#)
+[Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
