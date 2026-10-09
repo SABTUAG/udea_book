@@ -1,5 +1,5 @@
 
-// REVISAR ERRORES AQUI, 
+// REVISAR ERRORES AQUI,
 template <typename Object>
 class Node {
 public: 
