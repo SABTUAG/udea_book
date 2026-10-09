@@ -1,6 +1,5 @@
 
-// COND: revisar compatibilidad y
-// segun el avance, se decidira añadir o eliminar nos metodos a la plantilla. 
+// REVISAR ERRORES AQUI, 
 template <typename Object>
 class Node {
 public: 
@@ -30,7 +29,7 @@ public:
         Node<J>* newElement = new Node<J>(element); 
         if (head == nullptr) {
             head = newElement; 
-            return true; // Corregido: return true
+            return true; 
         }
         Node<J>* current = head; 
         while (current->next != nullptr) {
@@ -53,7 +52,6 @@ public:
             current = current->next; 
         }
         if (current->next != nullptr) {
-            // Corregido: Node<J> en vez de Nodo<T>
             Node<J>* elementDelete = current->next;
             current->next = current->next->next; 
             delete elementDelete;                                
