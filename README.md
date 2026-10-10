@@ -1,64 +1,8 @@
 # Red Social en Consola 
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7928ca;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <style>
-    .btn {
-      fill: url(#grad);
-      rx: 30px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .btn:hover {
-      fill: #00dfd8;
-      filter: drop-shadow(0px 5px 12px rgba(0, 223, 216, 0.7));
-    }
-    .text {
-      fill: white;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      pointer-events: none;
-    }
-  </style>
-  <rect class="btn" width="220" height="60"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="text">Diagrama</text>
-</svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7928ca;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <style>
-    .btn {
-      fill: url(#grad);
-      rx: 30px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .btn:hover {
-      fill: #00dfd8;
-      filter: drop-shadow(0px 5px 12px rgba(0, 223, 216, 0.7));
-    }
-    .text {
-      fill: white;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      pointer-events: none;
-    }
-  </style>
-  <rect class="btn" width="220" height="60"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="text">Video</text>
-</svg>
 
+[![Diagrama](https://img.shields.io/badge/Texto-Color?style=for-the-badge)](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link)
 
+[Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
 
 
 Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objetos (POO)**, con gestión de **memoria dinámica** y **listas enlazadas** para asegurar un alto rendimiento computacional.
@@ -67,12 +11,6 @@ Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objeto
 
 * **Consumo de recursos de memoria:** Optimización mediante asignación y liberación dinámica de recursos.
 * **Tiempo de ejecución:** Operaciones de alta velocidad mediante el uso eficiente de estructuras enlazadas y complejidad computacional BigO.
-
-[![Diagrama](https://img.shields.io/badge/Texto-Color?style=for-the-badge)](https://tu-sitio.com)
-
-[Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
-
-[Ver primer diagrama de clases](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link) 
 
 ## PRIMER AVANCE DESAFÍO II
 
