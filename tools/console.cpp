@@ -2,6 +2,8 @@
 using namespace std;
 
 // -- REVISAR inputValidChar e inputValidInt -- 
+// FALLAS ESCONDIDAS: saltos de linea continua y espacios puedes 
+// romper la lógica de visualización en consola. 
 class Console {
 
     public: 
@@ -12,8 +14,7 @@ class Console {
                 lines--; 
             }    
         }
-
-
+        
         template <unsigned int lengthValidChars>
         static char inputValidChar(
             const char* prompt, 
@@ -23,8 +24,7 @@ class Console {
             bool valid = false;
             while (!valid) {
                 cout << prompt;
-                //cin >> character; 
-                cin.get(character); 
+                cin >> character; 
                 cin.clear(); 
                 cin.ignore(1000, '\n'); 
                 for (int n = 0; n < lengthValidChars; n++) {
@@ -34,44 +34,6 @@ class Console {
                     }
                 }
                 Console::clear(); 
-            }
-            return character; 
-        }
-
-        // pro 
-        static char inputChar(const char* prompt){
-            try{
-                cout << prompt; 
-                char character; 
-                if (!cin.get(character)){
-                    Console::clear(); 
-                    throw; 
-                }
-                cin.ignore(1000, '\n'); 
-                return character; 
-            }
-            catch(...){
-                cin.clear(); 
-                Console::clear(); 
-                return ' '; 
-            }
-        }
-
-        template <unsigned int lengthValidChars>
-        static char inputValidCharPro(
-            const char* prompt, 
-            const char (&validChars)[lengthValidChars]
-        ){
-            
-            bool valid = false;
-            while (!valid) {
-                character = Console::inputChar(prompt); 
-                for (int n = 0; n < lengthValidChars; n++) {
-                    if (character == validChars[n]) {
-                        valid = true; 
-                        break; 
-                    }
-                }
             }
             return character; 
         }
@@ -88,10 +50,3 @@ class Console {
             return num; 
         }
 }; 
-
-
-int main(){
-    //char dos[2] = {'a', 'b'}; 
-    //Console::inputValidCharPro("Ingresa a-b: ", dos); 
-    return 0;
-}

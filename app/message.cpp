@@ -6,12 +6,15 @@ using namespace std;
 // solo entre amigos. 
 class Message {
     private: 
+        string _author; 
         string _message; 
         bool _read; 
         string _shippingDate; 
+        string _addressee; 
 
     public: 
         Message(string message, bool read): _message(message), _read(read) {}
+
 
         ~Message(); 
 }; 
