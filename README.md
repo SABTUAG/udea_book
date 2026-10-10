@@ -8,6 +8,7 @@ Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objeto
 * **Tiempo de ejecución:** Operaciones de alta velocidad mediante el uso eficiente de estructuras enlazadas y complejidad computacional BigO.
 
 [Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
+
 [Ver primer diagrama de clases](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link) 
 
 # PRIMER AVANCE DESAFÍO II
