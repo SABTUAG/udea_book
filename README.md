@@ -7,6 +7,8 @@ Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objeto
 * **Consumo de recursos de memoria:** Optimización mediante asignación y liberación dinámica de recursos.
 * **Tiempo de ejecución:** Operaciones de alta velocidad mediante el uso eficiente de estructuras enlazadas y complejidad computacional BigO.
 
+[![Diagrama](https://img.shields.io/badge/Texto-Color?style=for-the-badge)](https://tu-sitio.com)
+
 [Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
 
 [Ver primer diagrama de clases](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link) 
