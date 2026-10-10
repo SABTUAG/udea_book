@@ -1,5 +1,9 @@
 #include <string>
 using namespace std; 
+// NO SE REQUIERE: 
+// Crear, cargar, editar y eliminar álbumes y fotos. Ya están creados y toda su
+// información se carga desde el almacenamiento permanente.
+// No es necesario verificar que cada usuario de un like
 
 /**
  * Las fotos de cada usuario se guardan en formato .png, y se encuentran
@@ -30,6 +34,7 @@ class album {
         string _name; 
         string _filePath = "/udeaebook/users/.."; 
         string _privacySettings; // privado-publico-solo amigos
+        string _imageProfile; 
         string _images; 
     public: 
 

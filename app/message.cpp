@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std; 
+// NO SE REQUIERE: 
+// Responder los mensajes leídos de forma directa.
 
 // solo entre amigos. 
 class Message {

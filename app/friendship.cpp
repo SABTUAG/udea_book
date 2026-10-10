@@ -1,5 +1,7 @@
 #include <string>
 using namespace std; 
+// NO SE REQUIERE: 
+// ELiminar amistades 
 
 class Friendship {
     private: 
