@@ -1,4 +1,5 @@
 #include <iostream>
+#include "listTemplate.h"
 using namespace std; 
 // NO SE REQUIERE: 
 // Responder los mensajes leídos de forma directa.
@@ -19,8 +20,9 @@ class Message {
         ~Message(); 
 }; 
 
+// La entrada y salida de mensajes de cada usuario
 class Inbox {
     private: 
-        string _messagesSent; 
-        string _messagesReceived; 
+        List<string> _messagesSent; 
+        List<string> _messagesReceived; 
 }; 

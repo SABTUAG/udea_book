@@ -1,4 +1,5 @@
 #include <iostream>
+#include "listTemplate.h"
 #include <string>
 using namespace std; 
 
@@ -14,9 +15,11 @@ class User {
         string _country; 
         string _registrationDate; 
 
-        string _friends; // otros usuarios - relacion mutua amistad
-        string _messages; //
-        string _albums; 
+        List<string> _friends; // otros usuarios - relacion mutua amistad
+        List<string> _messages; //
+        List<string> _albums; 
 
     public: 
+        
+
 }; 

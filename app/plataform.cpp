@@ -1,3 +1,4 @@
+#include "listTemplate.h"
 #include <string>
 using namespace std; 
 // NO SE REQUIERE: 
@@ -7,7 +8,7 @@ class Plataform {
 
     private: 
         string _name = "UdeaEbook"; 
-        string _users; 
+        List<string> _users; 
     
     public: 
         

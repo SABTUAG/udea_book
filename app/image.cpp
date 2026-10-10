@@ -1,4 +1,6 @@
 #include <string>
+#include "listTemplate.h"
+
 using namespace std; 
 // NO SE REQUIERE: 
 // Crear, cargar, editar y eliminar álbumes y fotos. Ya están creados y toda su
