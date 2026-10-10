@@ -1,16 +1,11 @@
-# Red Social en Consola 
-
-[![Diagrama](https://img.shields.io/badge/Texto-Color?style=for-the-badge)](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link)
+# Red Social Ude@Ebook
 
 [Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
 
+[Ver diagrama](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link)
 
-Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objetos (POO)**, con gestión de **memoria dinámica** y **listas enlazadas** para asegurar un alto rendimiento computacional.
+[Ver diagrama ](https://drive.google.com/file/d/1KVAqxqt8SBJnf0sure7J5xP-eKFQLVBS/view?usp=drive_link)
 
-### Enfoque en la eficiencia
-
-* **Consumo de recursos de memoria:** Optimización mediante asignación y liberación dinámica de recursos.
-* **Tiempo de ejecución:** Operaciones de alta velocidad mediante el uso eficiente de estructuras enlazadas y complejidad computacional BigO.
 
 ## PRIMER AVANCE DESAFÍO II
 
@@ -32,9 +27,9 @@ Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objeto
 
 ### ANÁLISIS DEL PROBLEMA 
 
-Se debe construir una red social para consola  muy eficiente a nivel de memoria y tiempo de ejecución usando el paradigma de programación orientada a objetos. 
+Se debe construir una red social para consola  muy eficiente a nivel de memoria y tiempo de ejecución usando el paradigma de programación orientada a objetos, las estructuras usadas deben ser de creación propia. 
 
-Para la estructura del proyecto se dividirá: 
+La estructura del proyecto se dividirá en: 
 
 - Sección para la lógica, donde se guardarán las clases que integran la red social.  
 - Base de datos, donde se guardarán la información persistente  
