@@ -1,4 +1,65 @@
 # Red Social en Consola 
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7928ca;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <style>
+    .btn {
+      fill: url(#grad);
+      rx: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      fill: #00dfd8;
+      filter: drop-shadow(0px 5px 12px rgba(0, 223, 216, 0.7));
+    }
+    .text {
+      fill: white;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+  </style>
+  <rect class="btn" width="220" height="60"/>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="text">Diagrama</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7928ca;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <style>
+    .btn {
+      fill: url(#grad);
+      rx: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      fill: #00dfd8;
+      filter: drop-shadow(0px 5px 12px rgba(0, 223, 216, 0.7));
+    }
+    .text {
+      fill: white;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+  </style>
+  <rect class="btn" width="220" height="60"/>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="text">Video</text>
+</svg>
+
+
+
 
 Ude@Book esta construida bajo el paradigma de **Programación Orientada a Objetos (POO)**, con gestión de **memoria dinámica** y **listas enlazadas** para asegurar un alto rendimiento computacional.
 
