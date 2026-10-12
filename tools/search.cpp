@@ -1,4 +1,2 @@
 
-class BinarySearch {
-    private: 
-}; 
+#include "search.h"
