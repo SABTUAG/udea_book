@@ -6,12 +6,13 @@
 #include "listTemplate.h"
 
 /**
- * @brief Una clase que facilita acciones en la consola. 
+ * @brief Para facilitar acciones con la consola. 
+ * @details Contiene funciones para limpiar consola y recibir entradas validas
  */
 class Console {
 public:
     /**
-     * @brief Elimina una cantidad de lineas anteriores.
+     * @brief Para borrar una cantidad de lineas.
      * @param lines Cantidad de lineas que se eliminaran.
      */
     static void clear(int lines = 1) {
@@ -22,7 +23,7 @@ public:
     }
 
     /**
-     * @brief Solicita un caracter y
+     * @brief Para solicita un caracter y
      * @param prompt La instruccion que se mostrara al usuario.
      * @param ValidChars Los valores que acepta la funcion.
      * @post La función se ejecutara indefinidamente hasta que se ingrese un caracter valido.
@@ -44,6 +45,9 @@ public:
         return character;
     }
 
+    /**
+     * @brief Para 
+     */
     static std::string inputValidString(std::string prompt) {
         std::string text;
         bool valid = false;
@@ -57,6 +61,12 @@ public:
         return text;
     }
 
+    /**
+     * @brief Para recibir un numero valido dentro de un rango definido
+     * @param prompt Instruccion para el usuario
+     * @param min El valor minimo que recibe la funcion
+     * @param max El valor maximo que recibe la funcion 
+     */
     static int inputValidInt(std::string prompt, int min, int max) {
         int num = min - 1;
         while (num < min || num > max) {

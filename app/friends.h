@@ -6,6 +6,9 @@
 #include "listTemplate.h"
 #include "console.h"
 
+/**
+ * @brief Para representar una solicitud de amistad 
+ */
 class FriendRequest {
 private:
     std::string _senderNameID;
@@ -33,6 +36,9 @@ public:
     }
 };
 
+/**
+ * @brief Para representar y manejar la red de amigos, solicitudes recibidas y sugerencias
+ */
 class FriendshipManagement {
 private:
     List<std::string> _friendsNames;

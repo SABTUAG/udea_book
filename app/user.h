@@ -11,6 +11,9 @@
 #include "message.h"
 #include "password.h"
 
+/**
+ * @brief Para representar un usuario 
+ */
 class User {
 private:
     std::string _nameID;

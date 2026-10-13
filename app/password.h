@@ -4,6 +4,9 @@
 #include <string>
 #include "console.h"
 
+/**
+ * @brief Para representar la contraseña 
+ */
 class Password {
 private:
     std::string _password;
@@ -32,7 +35,7 @@ public:
 
     //Acciones con contraseña
     
-    //Configurar manual
+    //Interaccion manual
     void editPassword(){
         std::cout<<"-- Config Password --"<<std::endl; 
         std::cout<<"1. Change password"<<std::endl; 

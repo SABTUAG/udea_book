@@ -3,19 +3,22 @@
 
 #include <string>
 
+#include "user.h"
 #include "listTemplate.h"
 #include "console.h"
+#include "fileManagement.h"
 
+/**
+ * @brief Para representar la plaforma donde interactuan los usuarios
+ */
 class Plataform {
 private:
-    List<std::string> _namesUsers;
-
+    List<User> _users;
 public:
     Plataform();
 
-    // El registro y la eliminación de cuentas corresponden a User.
-    bool addUser();
-    bool authenticateUser();
+    void readDB(); 
+    void start(); 
 };
 
 #endif

@@ -11,6 +11,10 @@
  * /users/<fixed-subpath>/juanito76/albums/Cartagena2026/Malecon2612.png
  * /users/<fixed-subpath>/juanito76/albums/profile.png
  */
+
+/**
+ * @brief Para representar un like 
+ */
 class Like {
 private: 
     std::string _userName; 
@@ -20,6 +24,9 @@ public:
     std::string getUserName() const { return _userName; }
 };
 
+/**
+ * @brief Para representar una imagen
+ */
 class Image {
     // Cada imagen pertenece a un solo álbum y usa formato PNG
 private:
@@ -59,6 +66,9 @@ public:
 
 };
 
+/**
+ * @brief Para representar un album
+ */
 class Album {
     // Un álbum contiene cero o más fotos.
 private:
@@ -105,7 +115,7 @@ public:
         });
     }
 
-    // Configurar manual
+    // Interaccion manual
     void editAlbum(){
         std::cout<<"-- Edit Album --"<<std::endl; 
         std::cout<<"1. Change privacy"<<std::endl; 
@@ -134,6 +144,9 @@ public:
     }
 };
 
+/**
+ * @brief Para representar la galeria de un usuario
+ */
 class Gallery {
 private:
     // Guarda la ruta de la foto de perfil.
@@ -172,7 +185,7 @@ public:
         std::cout<<_profilePictureFilePath.getFilePath()<<std::endl;
     };
 
-    // Configurar manual
+    // Interaccion manual
     void editGallery(){
         std::cout<<"-- Edit Gallery --"<<std::endl; 
         std::cout<<"1.Change profile picture"<<std::endl; 

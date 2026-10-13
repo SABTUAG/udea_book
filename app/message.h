@@ -7,6 +7,9 @@
 #include "console.h"
 
 // Mensajes únicamente entre amigos.
+/**
+ * @brief Para representar un mensaje enviado
+ */
 class Message {
 private:
     std::string _message;
@@ -35,6 +38,9 @@ public:
     // Acciones de mensajes
 };
 
+/**
+ * @brief Para representar una conversación entre dos usuarios 
+ */
 class Chat {
 private:
     //::string _userName;
@@ -72,6 +78,9 @@ public:
     
 };
 
+/**
+ * @brief Para representar las conversaciones de un usuario 
+ */
 class Chats {
 private:
     List<Chat> _chats;

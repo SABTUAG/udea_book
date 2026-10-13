@@ -1,8 +1,9 @@
 #include <iostream>
-//#include "plataform.h"
-using namespace std; 
+#include "plataform.h"
 
 int main(){
-    //Plataform udeaebook; 
+    Plataform udeaebook; 
+    udeaebook.readDB(); 
+    udeaebook.start(); 
     return 0; 
 }
