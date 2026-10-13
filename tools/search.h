@@ -1,7 +1,7 @@
 #ifndef SEARCH_H
 #define SEARCH_H
 
-class BinarySearch {
+class SearchFlash {
 };
 
 #endif

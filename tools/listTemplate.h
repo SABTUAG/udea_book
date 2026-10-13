@@ -1,11 +1,11 @@
 #ifndef LIST_TEMPLATE_H
 #define LIST_TEMPLATE_H
 
-#include <iostream>
-#include <initializer_list> // TEMPORAL, para pruebas con inicialización de datos
+// #include <iostream> Se usaba con el metodo .show()
+//#include <initializer_list> // TEMPORAL, para pruebas con inicialización de datos
 
 /**
- * @brief Nodo
+ * @brief Para un Nodo indivual de lista enlazada
  */
 template <typename Object>
 class Node {
@@ -13,12 +13,12 @@ public:
     Object value;
     Node<Object>* next;
 
-    Node(Object initialValue) : value(initialValue), next(nullptr) {}
+    Node(const Object& initialValue) : value(initialValue), next(nullptr) {}
 };
 
 /**
- * @brief Plantilla de lista con cuatro funcionalidades soportadas
- * @details Cinco funcionalidade soportadas
+ * @brief Para una lista enlazada
+ * @warning No olvidar liberar la memoria manualmente
  */
 template <typename Object>
 class List {
@@ -27,13 +27,7 @@ private:
 
 public:
 
-    List() : head(nullptr) {}
-    // Temporal
-    List(std::initializer_list<Object> values) : head(nullptr) {
-        for (const Object& value : values) {
-            add(value);
-        }
-    }
+    List(): head(nullptr) {}
 
     ~List() {
         Node<Object>* current = head;
@@ -48,8 +42,9 @@ public:
      * @brief Permite añadir un nuevo elemento al final de la lista
      * @param element Elemento que se desea añadir a la lista
      * @return True si se agrega el nuevo elemento, False si ya existe en la lista
+     * @pre El objeto debe soportar operator==
      */
-    bool add(Object element) {
+    bool add(const Object& element) {
         if (search(element)) return false;
 
         Node<Object>* newElement = new Node<Object>(element);
@@ -71,7 +66,7 @@ public:
      * @param element Elemento que se desea eliminar
      * @return True si se elimina el elemento , False si no se elimina
      */
-    bool remove(Object element) {
+    bool remove(const Object& element) {
         if (head == nullptr) return false;
         if (head->value == element) {
             Node<Object>* headDelete = head;
@@ -93,14 +88,16 @@ public:
         return false;
     }
 
-    /**
+    /*
      * @brief Para cambiar un elemento por otro
      * @param oldValue Elemento que se desea cambiar
      * @param newValue Nuevo elemento para cambiar
+     * @warning OBSOLETO,creaba copias innecesarias. Reemplazado por forEach combinado con setters
      * @note El elemento que se desea cambiar, se elimina de forma definitiva
      * @return True si se puede realizar el cambio, False si no se puede
      */
-    bool replace(Object oldValue, Object newValue) const {
+    /* 
+    bool replace(Object oldValue, Object newValue) {
         Node<Object>* current = head;
         while (current != nullptr) {
             if (current->value == oldValue) {
@@ -111,13 +108,15 @@ public:
         }
         return false;
     }
+    */
 
     /**
      * @brief Para buscar un elemento especifico dentro de la lista
      * @param element Elemento que se buscara en la lista
+     * @warning No usar en listas grandes, la peor forma de buscar algo
      * @return True si el elemento se encuentra en la lista, False si no se se encuentra en la lista
      */
-    bool search(Object element) const {
+    bool search(const Object& element) const {
         Node<Object>* current = head;
         while (current != nullptr) {
             if (current->value == element) return true;
@@ -126,23 +125,11 @@ public:
         return false;
     }
 
-    /**
-     * @brief Aplica un proceso de busqueda especifico utilizando una función 
-     * @param action Funcion que se utiliza en la busqueda especial
-     * @warning Cuidado con las funciones que se utiliza 
-     */
-    void forEach(Function action) const {
-        Node<Object>* current = head;
-        while (current != nullptr) {
-            action(current->value);
-            current = current->next;
-        }
-    }
-
-    /**
+    /*
      * @brief Para mostrar todos los elementos de la lista
-     * @bug SIN SOPORTE 
+     * @bug SIN SOPORTE he inncesario, requiere sobrecargar el operator<< en cada clase construida
      */
+    /*
     void show() {
         Node<Object>* current = head;
         while (current != nullptr) {
@@ -151,7 +138,33 @@ public:
             current = current->next;
         }
         std::cout << '\n';
+    } 
+    */
+
+    /**
+     * @brief Aplica una función a cada elemento permitiendo modificarlo.
+     */
+    template <typename Function>
+    void forEach(Function action) {
+        Node<Object>* current = head;
+        while (current != nullptr) {
+            action(current->value);
+            current = current->next;
+        }
     }
+
+    /**
+     * @brief Aplica una función a cada elemento, pero no lo modifica.
+     * @note para listas definidas como const
+     */
+    template <typename Function>
+    void forEach(Function action) const {
+        Node<Object>* current = head;
+        while (current != nullptr) {
+            action(current->value);
+            current = current->next;
+        }
+    }  
 };
 
 #endif

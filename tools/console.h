@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "str.h"
 #include "listTemplate.h"
 
 /**
@@ -31,7 +32,7 @@ public:
      * @return character
      */
     // Revisar el manejo de saltos de línea y espacios en las entradas.
-    static char inputValidChar(std::string prompt, List<char> validChars) {
+    static char inputValidChar(str prompt, List<char> validChars) {
         char character;
         bool valid = false;
         while (!valid) {
