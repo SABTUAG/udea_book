@@ -4,6 +4,7 @@
 #include <string>
 
 #include "listTemplate.h"
+#include "console.h"
 
 class Plataform {
 private:

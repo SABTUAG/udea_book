@@ -2,11 +2,18 @@
 #define CONSOLE_H
 
 #include <iostream>
-
+#include <string>
 #include "listTemplate.h"
 
+/**
+ * @brief Una clase que facilita acciones en la consola. 
+ */
 class Console {
 public:
+    /**
+     * @brief Elimina una cantidad de lineas anteriores.
+     * @param lines Cantidad de lineas que se eliminaran.
+     */
     static void clear(int lines = 1) {
         while (lines > 0) {
             std::cout << "\033[A\33[2K\r";
@@ -14,8 +21,16 @@ public:
         }
     }
 
+    /**
+     * @brief Solicita un caracter y
+     * @param prompt La instruccion que se mostrara al usuario.
+     * @param ValidChars Los valores que acepta la funcion.
+     * @post La función se ejecutara indefinidamente hasta que se ingrese un caracter valido.
+     * @warning Si el usuario ingresa un espacio seguido de un salto de linea. 
+     * @return character
+     */
     // Revisar el manejo de saltos de línea y espacios en las entradas.
-    static char inputValidChar(const char* prompt, List<char> validChars) {
+    static char inputValidChar(std::string prompt, List<char> validChars) {
         char character;
         bool valid = false;
         while (!valid) {
@@ -29,7 +44,20 @@ public:
         return character;
     }
 
-    static int inputValidInt(const char* prompt, int min, int max) {
+    static std::string inputValidString(std::string prompt) {
+        std::string text;
+        bool valid = false;
+        while (!valid) {
+            std::cout << prompt;
+            std::getline(std::cin, text);
+            std::cin.clear();
+            valid = text.find(' ') == std::string::npos;
+            Console::clear();
+        }
+        return text;
+    }
+
+    static int inputValidInt(std::string prompt, int min, int max) {
         int num = min - 1;
         while (num < min || num > max) {
             std::cout << prompt;
