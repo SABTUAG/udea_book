@@ -1,0 +1,13 @@
+{
+"nameID":"juanitoPerez",
+"birthDate":"1998-05-15",
+"email":"juanito.perez@example.com",
+"password":"***",
+"city":"Medellin",
+"country":"Colombia",
+"registrationDate":"2026-10-12",
+"friends":["carlos_m"],
+"chats":[],
+"gallery":[]
+}
+
