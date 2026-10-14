@@ -2,9 +2,10 @@
 
 [Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
 
-[Ver diagrama](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link)
+Versiones: 
+[1](https://drive.google.com/file/d/1Z5c6jAvguRtdLreZFqCEST2mogepnOgc/view?usp=drive_link)
 
-[Ver diagrama ](https://drive.google.com/file/d/1KVAqxqt8SBJnf0sure7J5xP-eKFQLVBS/view?usp=drive_link)
+[1.2](https://drive.google.com/file/d/1KVAqxqt8SBJnf0sure7J5xP-eKFQLVBS/view?usp=drive_link)
 
 
 ## PRIMER AVANCE DESAFÍO II

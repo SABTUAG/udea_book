@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+/**
+ * @brief Para emular la clase string 
+ * @warning Falta agregar soporte, integrar en cantidades minimas
+ */
 class str {
 private: 
     char* _text; 
@@ -79,7 +83,6 @@ public:
         }
         return true; 
     }
-    // Revisar despues 
     bool operator<(const str& other) const {
         int minLen = (_len < other._len) ? _len : other._len;
         for (int i = 0; i < minLen; i++) {
@@ -94,6 +97,52 @@ public:
     str operator+(const str& other) const {
         str newText; 
         delete[] newText._text; 
+        newText._len = _len + other._len; 
+        newText._text = new char[newText._len+1]; 
+        for (int i=0; i<_len; i++){
+            newText._text[i] = _text[i]; 
+        }
+        for (int i=0; i<other._len; i++){
+            newText._text[_len+i] = other._text[i]; 
+        }
+        newText._text[newText._len] = '\0'; 
+        return newText; 
+    }
+    str& operator+=(const str& other){
+        *this = *this + other; 
+        return *this; 
+    }
+    int find(const str& substr) const {
+        if (substr._len == 0) return 0; 
+        if (substr._len > _len) return -1; 
+        for (int i=0; i<=(_len-substr._len); i++){
+            bool substrInStr = true; 
+            for(int n=0; n<substr._len; n++) {
+                if (_text[i+n] != substr._text[n]){
+                    substrInStr = false; 
+                    break; 
+                }
+            }
+            if (substrInStr) return i; 
+        }
+        return -1; 
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const str& strToShow) {
+        os << strToShow._text;
+        return os; 
+    }
+    friend std::istream& operator>>(std::istream& is, str& strInput) {
+        char buffer[504]; 
+        is >> buffer; 
+        strInput = buffer; 
+        return is; 
+    }
+    inline std::istream& getline(std::istream& is, str& strInputLine) {
+        char buffer[504]; 
+        is.getline(buffer, 504); 
+        strInputLine = buffer; 
+        return is; 
     }
 };
 

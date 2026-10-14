@@ -6,9 +6,9 @@
 #include "str.h"
 #include "listTemplate.h"
 
+
 /**
- * @brief Para facilitar acciones con la consola. 
- * @details Contiene funciones para limpiar consola y recibir entradas validas
+ * @brief Para facilitar acciones con la consola
  */
 class Console {
 public:
@@ -29,10 +29,12 @@ public:
      * @param ValidChars Los valores que acepta la funcion.
      * @post La función se ejecutara indefinidamente hasta que se ingrese un caracter valido.
      * @warning Si el usuario ingresa un espacio seguido de un salto de linea. 
+     * @bug Sin soporte para class str, No usar
      * @return character
      */
     // Revisar el manejo de saltos de línea y espacios en las entradas.
-    static char inputValidChar(str prompt, List<char> validChars) {
+    //static char input(const str& prompt, List<char>& validChars) {
+    static char input(const str& prompt, const str& validChars) {
         char character;
         bool valid = false;
         while (!valid) {
@@ -40,7 +42,7 @@ public:
             std::cin >> character;
             std::cin.clear();
             std::cin.ignore(1000, '\n');
-            valid = validChars.search(character);
+            //valid = validChars.find(character);
             Console::clear();
         }
         return character;
@@ -48,15 +50,19 @@ public:
 
     /**
      * @brief Para 
+     * @bug No integrar, fallas en todo
      */
-    static std::string inputValidString(std::string prompt) {
+    static std::string input(
+        const std::string& prompt, 
+        const str& unacceptableValues
+    ) {
         std::string text;
         bool valid = false;
         while (!valid) {
             std::cout << prompt;
-            std::getline(std::cin, text);
+            getline(std::cin, text);
             std::cin.clear();
-            valid = text.find(' ') == std::string::npos;
+            valid = true; 
             Console::clear();
         }
         return text;
@@ -68,7 +74,7 @@ public:
      * @param min El valor minimo que recibe la funcion
      * @param max El valor maximo que recibe la funcion 
      */
-    static int inputValidInt(std::string prompt, int min, int max) {
+    static int input(const str& prompt, int min, int max) {
         int num = min - 1;
         while (num < min || num > max) {
             std::cout << prompt;
