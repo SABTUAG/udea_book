@@ -2,28 +2,29 @@
 #define USER_H
 
 #include <string>
+#include "listTemplate.h"
+#include "console.h"
+#include "str.h"
 
 #include "date.h"
-#include "console.h"
 #include "friends.h"
 #include "image.h"
-#include "listTemplate.h"
 #include "message.h"
-#include "password.h"
 
 /**
  * @brief Para representar un usuario 
  */
 class User {
 private:
-    std::string _nameID;
+    int _id; 
+    str _nameID;
     Date _birthDate;
-    std::string _email;
-    Password _password;
-    std::string _city;
-    std::string _country;
+    str _email;
+    str _password;
+    str _city;
+    str _country;
     Date _registrationDate;
-    FriendshipManagement _friends;
+    FriendshipManagement _networkOfFriends;
     Chats _chats;
     Gallery _gallery;
 
@@ -31,28 +32,28 @@ public:
     // Constructor
     User(); 
 
+    // Cargar operadores
+    bool operator==(const User& otherUser) const {
+        return _nameID == otherUser._nameID; 
+    }
+    bool operator!=(const User& otherUser) const {
+        return !(*this==otherUser); 
+    }
+
     // Getters
-    std::string getNameID() const {
-        return _nameID;
-    } 
-    std::string getEmail() const {
-        return _email; 
-    }
-    std::string getCity() const {
-        return _city; 
-    }
-    std::string getCountry() const {
-        return _country; 
-    }
+    const str& getNameID() const { return _nameID; } 
+    const str& getEmail() const { return _email; }
+    const str& getCity() const { return _city; }
+    const str& getCountry() const { return _country; }
     
     //Setters
-    void setEmail(std::string newEmail){
+    void setEmail(const str& newEmail){
         _email = newEmail; 
     }
-    void setCity(std::string newCity){
+    void setCity(const str& newCity){
         _city = newCity; 
     }
-    void setCountry(std::string newCountry){
+    void setCountry(const str& newCountry){
         _country = newCountry; 
     }
 

@@ -34,7 +34,7 @@ public:
      */
     // Revisar el manejo de saltos de línea y espacios en las entradas.
     //static char input(const str& prompt, List<char>& validChars) {
-    static char input(const str& prompt, const str& validChars) {
+    static char inputChar(const str& prompt, const str& validChars) {
         char character;
         bool valid = false;
         while (!valid) {
@@ -42,7 +42,12 @@ public:
             std::cin >> character;
             std::cin.clear();
             std::cin.ignore(1000, '\n');
-            //valid = validChars.find(character);
+            for(int n=0; n< validChars.len(); n++){
+                if (character == validChars[n]){
+                    valid = true; 
+                    break; 
+                }
+            }
             Console::clear();
         }
         return character;
@@ -52,7 +57,7 @@ public:
      * @brief Para 
      * @bug No integrar, fallas en todo
      */
-    static std::string input(
+    static std::string inputStr(
         const std::string& prompt, 
         const str& unacceptableValues
     ) {
@@ -74,7 +79,7 @@ public:
      * @param min El valor minimo que recibe la funcion
      * @param max El valor maximo que recibe la funcion 
      */
-    static int input(const str& prompt, int min, int max) {
+    static int inputInt(const str& prompt, int min, int max) {
         int num = min - 1;
         while (num < min || num > max) {
             std::cout << prompt;
