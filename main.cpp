@@ -1,5 +1,5 @@
-#include <iostream>
-#include "plataform.h"
+
+#include "app/plataform.h"
 
 int main(){
     Plataform udeaebook; 

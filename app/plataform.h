@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "user.h"
+#include "user/user.h"
 #include "listTemplate.h"
 #include "console.h"
 #include "fileManagement.h"
@@ -13,7 +13,7 @@
  */
 class Plataform {
 private:
-    List<User> _users;
+    List<User*> _users;
 public:
     Plataform();
 

@@ -1,11 +1,13 @@
 #ifndef LIST_TEMPLATE_H
 #define LIST_TEMPLATE_H
-
-// #include <iostream> Se usaba con el metodo .show()
-//#include <initializer_list> // TEMPORAL, para pruebas con inicialización de datos
+/**
+ * @file listTemplate.h
+ * @brief Plantilla de lista enlazada. 
+ */
 
 /**
- * @brief Para un Nodo indivual de lista enlazada
+ * @brief Nodo indivual de la lista enlazada.
+ * @tparam Object Tipo de dato almacenado en el nodo
  */
 template <typename Object>
 class Node {
@@ -18,19 +20,20 @@ public:
 
 /**
  * @brief Para una lista enlazada
- * @warning No olvidar liberar la memoria manualmente
+ * @warning No libera la memoria la memoria apuntada
  */
 template <typename Object>
 class List {
 private:
-    Node<Object>* head;
+    Node<Object>* _head;
+    int _size; 
 
 public:
 
-    List(): head(nullptr) {}
+    List(): _head(nullptr) {}
 
     ~List() {
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current != nullptr) {
             Node<Object>* next = current->next;
             delete current;
@@ -48,12 +51,12 @@ public:
         if (search(element)) return false;
 
         Node<Object>* newElement = new Node<Object>(element);
-        if (head == nullptr) {
-            head = newElement;
+        if (_head == nullptr) {
+            _head = newElement;
             return true;
         }
 
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current->next != nullptr) {
             current = current->next;
         }
@@ -67,15 +70,15 @@ public:
      * @return True si se elimina el elemento , False si no se elimina
      */
     bool remove(const Object& element) {
-        if (head == nullptr) return false;
-        if (head->value == element) {
-            Node<Object>* headDelete = head;
-            head = head->next;
+        if (_head == nullptr) return false;
+        if (_head->value == element) {
+            Node<Object>* headDelete = _head;
+            _head = _head->next;
             delete headDelete;
             return true;
         }
 
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current->next != nullptr && !(current->next->value == element)) {
             current = current->next;
         }
@@ -88,28 +91,6 @@ public:
         return false;
     }
 
-    /*
-     * @brief Para cambiar un elemento por otro
-     * @param oldValue Elemento que se desea cambiar
-     * @param newValue Nuevo elemento para cambiar
-     * @warning OBSOLETO,creaba copias innecesarias. Reemplazado por forEach combinado con setters
-     * @note El elemento que se desea cambiar, se elimina de forma definitiva
-     * @return True si se puede realizar el cambio, False si no se puede
-     */
-    /* 
-    bool replace(Object oldValue, Object newValue) {
-        Node<Object>* current = head;
-        while (current != nullptr) {
-            if (current->value == oldValue) {
-                current->value = newValue;
-                return true;
-            }
-            current = current->next;
-        }
-        return false;
-    }
-    */
-
     /**
      * @brief Para buscar un elemento especifico dentro de la lista
      * @param element Elemento que se buscara en la lista
@@ -117,7 +98,7 @@ public:
      * @return True si el elemento se encuentra en la lista, False si no se se encuentra en la lista
      */
     bool search(const Object& element) const {
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current != nullptr) {
             if (current->value == element) return true;
             current = current->next;
@@ -131,7 +112,7 @@ public:
      */
     /*
     void show() {
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current != nullptr) {
             std::cout << current->value;
             if (current->next != nullptr) std::cout << ", ";
@@ -146,7 +127,7 @@ public:
      */
     template <typename Function>
     void forEach(Function action) {
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current != nullptr) {
             action(current->value);
             current = current->next;
@@ -159,7 +140,7 @@ public:
      */
     template <typename Function>
     void forEach(Function action) const {
-        Node<Object>* current = head;
+        Node<Object>* current = _head;
         while (current != nullptr) {
             action(current->value);
             current = current->next;
