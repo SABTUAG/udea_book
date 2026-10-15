@@ -10,7 +10,7 @@
 
 Realice una lectura comprensiva del texto del desafío empleando un código de colores para identificar objetos, atributos y métodos, además de resaltar las restricciones y recomendaciones. 
 
-| Clasificación de resaltadores  |
+| Clasificación de resaltadores  | |
 | :---- | :---- |
 | Azul | Clases |
 | Verde | Atributos |
@@ -49,11 +49,11 @@ Sobre la interacion . sobre los mensajes. sobre las imagenes.
   - main
 
 2. Como es restricción **Usar herramientas que resuelvan problemas críticos**, las cree. Todas están se alojaran en **tools** a excepción de una, la cual estará en el directorio **databases**.
-a/). Una plantilla de lista usando conceptos de lista enlazada. 
-b/). Una clase que emule string.
-c/). Una clase que facilite todo lo relacionado con la consola.
-d/). Un modulo para las funcionalidades para medir el rendimiento. 
-e/). Un modulo encargado del acceso a los archivos, su lectura y modificación. (Si me queda tiempo también le implementare para comprimir y encriptar la información.)
+a. Una plantilla de lista usando conceptos de lista enlazada. 
+b. Una clase que emule string.
+c. Una clase que facilite todo lo relacionado con la consola.
+d. Un modulo para las funcionalidades para medir el rendimiento. 
+e. Un modulo encargado del acceso a los archivos, su lectura y modificación. (Si me queda tiempo también le implementare para comprimir y encriptar la información.)
 
 3. Elegi el archivos txt para almacenar la información ..
 
@@ -79,10 +79,24 @@ e/). Un modulo encargado del acceso a los archivos, su lectura y modificación. 
 
 1. Respecto a como y donde se guardara la información, he hecho cambios significativos.
 Primero tenia previsto crear un archivo txt por cada usuario registrado y el nombre del archivo seria el mismo que el nombre del usuario y su contenido organizado de la siguiente forma: 
+{
+"nameID":"juanitoPerez",
+"birthDate":"1998-05-15",
+"email":"juanito.perez@gmail.com",
+"password":"***",
+"city":"Medellin",
+"country":"Colombia",
+"registrationDate":"2026-10-12",
+"friends":[...],
+"chats":[...],
+"gallery":[...]
+}
 pero desisti de esa idea porque seria una cantidad absurda de archivos, por ejemplo para el ejercicio de los 1000 usuarios, necesitaria 1000 archivos. 
-Mi segunda idea fue guarda todos los usuarios en un mismo archivo, pero desisti, Lo que implemente fue esto: 
- - usersAunteticate <- Aqui guarda el nombre del usuario, su contraseña y un ID numerico
- - messages <- Id numerico y mensajes enviados ..
- - images
- - friends
- - friendRequest 
+Mi segunda idea fue guardar todos los usuarios en un mismo archivo, conservando el formato, pero agregarle un id ej. (id{...}) y comprimir y encriptar la información. asi la busqueda por id seria rápida, pero tenia un fallo, un usuario no ingresaria por su ID, sino por su contraseña y nombre único.
+Lo que implemente fue esto, usar un archivo para cada tipo de información: 
+  - usersAunteticate <- Aqui guarda el nombre del usuario, su contraseña y un ID numerico
+  - messages <- Id numerico y mensajes recibidos ..
+  - images <- Id numerico he imagenes
+  - friends <- Id numerico y amigos
+  - friendRequest <- Id numerico y solicitudes de amistad
+Cuando un usuario inicia, la plataforma lo busca en userAutenticate y lo valida, según eso devuelve su ID, con ese Id ya se puede acceder a la demás información en los otros archivos. 
