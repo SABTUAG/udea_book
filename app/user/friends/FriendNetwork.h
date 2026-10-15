@@ -9,7 +9,7 @@ class User;
 
 /**
  * @brief Representa la red de amigos del usuario solicitudes recibidas y sugerencias. 
- * @details Gestiona los amigos, las sugerencias de amistad, las solicitudes enviadas y recibidas. 
+ * @details Gestiona los amigos, las sugerencias de amistad, las solicitudes recibidas. 
  */
 class FriendNetwork {
 private: 

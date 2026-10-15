@@ -8,17 +8,18 @@
 #include "message.h"
 
 /**
- * @brief Representa los mensajes enviados y recibidos de cada usuario. 
+ * @brief Representa el gestor de los mensajes recibidos de cada usuario. 
  */
 class MessageHandling {
 private:
-    List<Message> _sent;  
     List<Message> _received; 
 
 public:
     MessageHandling(); 
 
-    List<Message>& getSent();  
+    List<Message>& getReceived(){
+        return _received; 
+    };  
 
 };
 

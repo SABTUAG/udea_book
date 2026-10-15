@@ -2,7 +2,6 @@
 #define MESSAGE_H
 
 #include <string>
-#include "listTemplate.h"
 #include "str.h"
 #include "console.h"
 

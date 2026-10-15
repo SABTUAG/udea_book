@@ -31,7 +31,8 @@ private:
 public:
     User(); 
     User(
-        int id, const str& nameID, 
+        int id, 
+        const str& nameID, 
         const str& birthDate, 
         const str& email,
         const str& password, 

@@ -17,7 +17,6 @@ private:
         while (text[i] != '\0') i++; 
         return i; 
     }
-
     static char* copy(const char* text){
         int n = len(text);
         char* whereToCopy = new char[n+1]; 
@@ -29,7 +28,6 @@ private:
     }
 
 public: 
-    //Constructores y destructor
     str(): _len(0) {
         _text = new char[1]; 
         _text[0] = '\0';
@@ -46,7 +44,6 @@ public:
         delete[] _text;
     }
 
-    // Sobrecargar operadores
     str& operator=(const char* text){
         delete[] _text; 
         _len = len(text); 
@@ -61,13 +58,19 @@ public:
         return *this; 
     }
 
-    //Getters
-    const char* c_str() const { return _text; }
-    int len() const { return _len; }
-    char operator[](int i) const { return _text[i]; }
-    char& operator[](int i) { return _text[i]; }
+    const char* c_str() const { 
+        return _text; 
+    }
+    int len() const { 
+        return _len; 
+    }
+    char operator[](int i) const { 
+        return _text[i]; 
+    }
+    char& operator[](int i) { 
+        return _text[i]; 
+    }
 
-    // Acciones de str
     bool operator==(const str& other) const {
         if (_len != other._len) return false; 
         for (int i=0; i<_len; i++){
@@ -86,14 +89,24 @@ public:
     bool operator<(const str& other) const {
         int minLen = (_len < other._len) ? _len : other._len;
         for (int i = 0; i < minLen; i++) {
-            if (_text[i] != other._text[i]) return (_text[i] < other._text[i]);
+            if (_text[i] != other._text[i]) {
+                return (_text[i] < other._text[i]);
+            }
         }
         return _len < other._len;
     }
-    bool operator!=(const str& other) const { return !(*this == other); }
-    bool operator>(const str& other) const { return other < *this; }
-    bool operator<=(const str& other) const { return !(other < *this); }
-    bool operator>=(const str& other) const { return !(*this < other); }
+    bool operator!=(const str& other) const { 
+        return !(*this == other); 
+    }
+    bool operator>(const str& other) const { 
+        return other < *this; 
+    }
+    bool operator<=(const str& other) const { 
+        return !(other < *this); 
+    }
+    bool operator>=(const str& other) const { 
+        return !(*this < other); 
+    }
     str operator+(const str& other) const {
         str newText; 
         delete[] newText._text; 
@@ -128,21 +141,21 @@ public:
         return -1; 
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const str& strToShow) {
-        os << strToShow._text;
-        return os; 
+    friend std::ostream& operator<<(std::ostream& output, const str& strToShow) {
+        output << strToShow._text;
+        return output; 
     }
-    friend std::istream& operator>>(std::istream& is, str& strInput) {
-        char buffer[504]; 
-        is >> buffer; 
-        strInput = buffer; 
-        return is; 
+    friend std::istream& operator>>(std::istream& input, str& strDestination) {
+        char buffer[512]; 
+        input >> buffer; 
+        strDestination = buffer; 
+        return input; 
     }
-    inline std::istream& getline(std::istream& is, str& strInputLine) {
-        char buffer[504]; 
-        is.getline(buffer, 504); 
+    inline std::istream& getline(std::istream& input, str& strInputLine) {
+        char buffer[512]; 
+        input.getline(buffer, 512); 
         strInputLine = buffer; 
-        return is; 
+        return input; 
     }
 };
 

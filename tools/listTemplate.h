@@ -1,9 +1,5 @@
 #ifndef LIST_TEMPLATE_H
 #define LIST_TEMPLATE_H
-/**
- * @file listTemplate.h
- * @brief Plantilla de lista enlazada. 
- */
 
 /**
  * @brief Nodo indivual de la lista enlazada.
@@ -14,8 +10,9 @@ class Node {
 public:
     Object value;
     Node<Object>* next;
-
-    Node(const Object& initialValue) : value(initialValue), next(nullptr) {}
+    Node(const Object& initialValue): 
+        value(initialValue), 
+        next(nullptr) {}
 };
 
 /**
@@ -26,7 +23,7 @@ template <typename Object>
 class List {
 private:
     Node<Object>* _head;
-    int _size; 
+    int _len; 
 
 public:
 
@@ -41,21 +38,32 @@ public:
         }
     }
 
-    /**
-     * @brief Permite añadir un nuevo elemento al final de la lista
-     * @param element Elemento que se desea añadir a la lista
-     * @return True si se agrega el nuevo elemento, False si ya existe en la lista
-     * @pre El objeto debe soportar operator==
-     */
+    int getLen() const { 
+        return _len; 
+    }
+
+    Object& operator[](int index) {
+        Node<Object>* current = _head;
+        for (int i = 0; i < index; i++) {
+            current = current->next;
+    }
+        return current->value;
+    }
+    Object& operator[](int index) const {
+        Node<Object>* current = _head;
+        for (int i = 0; i < index; i++) {
+            current = current->next;
+        }
+    return current->value;
+    }
+
     bool add(const Object& element) {
         if (search(element)) return false;
-
         Node<Object>* newElement = new Node<Object>(element);
         if (_head == nullptr) {
             _head = newElement;
             return true;
         }
-
         Node<Object>* current = _head;
         while (current->next != nullptr) {
             current = current->next;
@@ -64,11 +72,6 @@ public:
         return true;
     }
 
-    /**
-     * @brief Para eliminar un elemento especifico de la lista
-     * @param element Elemento que se desea eliminar
-     * @return True si se elimina el elemento , False si no se elimina
-     */
     bool remove(const Object& element) {
         if (_head == nullptr) return false;
         if (_head->value == element) {
@@ -77,7 +80,6 @@ public:
             delete headDelete;
             return true;
         }
-
         Node<Object>* current = _head;
         while (current->next != nullptr && !(current->next->value == element)) {
             current = current->next;
@@ -105,22 +107,6 @@ public:
         }
         return false;
     }
-
-    /*
-     * @brief Para mostrar todos los elementos de la lista
-     * @bug SIN SOPORTE he inncesario, requiere sobrecargar el operator<< en cada clase construida
-     */
-    /*
-    void show() {
-        Node<Object>* current = _head;
-        while (current != nullptr) {
-            std::cout << current->value;
-            if (current->next != nullptr) std::cout << ", ";
-            current = current->next;
-        }
-        std::cout << '\n';
-    } 
-    */
 
     /**
      * @brief Aplica una función a cada elemento permitiendo modificarlo.
