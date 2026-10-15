@@ -9,7 +9,7 @@
 #include "friends/FriendNetwork.h"
 #include "images/gallery.h"
 #include "images/image.h"
-#include "messages/message.h"
+#include "messages/MessageHandling.h"
 
 /**
  * @brief Representa un usuario en la red social
@@ -25,7 +25,7 @@ private:
     str _country;
     str _registrationDate;
     FriendNetwork _friends;
-    Chats _chats;
+    MessageHandling _chats;
     Gallery _gallery;
 
 public:

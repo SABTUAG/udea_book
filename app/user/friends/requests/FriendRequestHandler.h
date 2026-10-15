@@ -5,30 +5,25 @@
 #include "FriendRequest.h"
 
 /**
- * @brief Gestiona las solicitudes de amistad enviadas y recibidas de un usuario.
+ * @brief Gestiona las solicitudes de amistad recibidas.
  */
 class FriendRequests {
-private:
-    List<FriendRequest> _sent;       
+private:   
     List<FriendRequest> _received;   
 
 public:
     FriendRequests();
-
-    const List<FriendRequest>& getSent() const { return _sent; }
+    FriendRequests(const List<FriendRequest>& receivedRequestsRecovered): 
+        _received(receivedRequestsRecovered) {}
+        
     const List<FriendRequest>& getReceived() const { return _received; }
-
     // Consultas
     bool hasSentTo(int recipientID) const;
     bool hasReceivedFrom(int senderID) const;
-    //bool hasSentAny() const { return _sent.getSize() > 0; }
     //bool hasReceivedAny() const { return _received.getSize() > 0; }
 
-    bool addSent(const FriendRequest& r) { return _sent.add(r); }
     bool addReceived(const FriendRequest& r) { return _received.add(r); }
-    bool removeSent(int recipientID);
-    bool removeReceived(int senderID);
-
+    bool removeReceived(int senderID); 
     void showReceived() const;
 };
 
