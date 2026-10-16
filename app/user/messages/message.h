@@ -1,46 +1,52 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include <string>
+#include <iostream>
 #include "str.h"
-#include "console.h"
 
 /**
- * @brief Representa un mensaje enviado por un usuario a otro usuario. 
+ * @brief Representa un mensaje enviado por un usuario a otro usuario.
  */
 class Message {
+
 private:
-    int _senderID; 
-    int _receiverID; 
+    int _senderID;
+    int _receiverID;
     str _message;
     str _shippingDate;
     bool _read;
 
 public:
+    Message();
     Message(
         int senderID,
         int receiverID,
-        const str& message, 
+        const str& message,
+        const str& shippingDate,
         bool read
-    ): 
-        _message(message), 
-        _read(read) {}
+    );
 
-    str getMessage() const { 
-        return _message; 
-    }
-    str getShippingDate() const { 
-        return _shippingDate; 
-    }
-    bool getRead() const {
-        return _read; 
-    }
+    int getSenderID() const;
+    int getReceiverID() const;
+    const str& getMessage() const;
+    const str& getShippingDate() const;
+    bool getRead() const;
 
-    bool setRead(bool marked) {
-        _read = marked; 
-    }
+    void setRead(bool marked);
 
+    bool operator==(const Message& otherMsg) const;
+    bool operator!=(const Message& otherMsg) const;
+    bool operator<(const Message& otherMsg) const;
+
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const Message& msgN
+    );
 };
 
+std::ostream& operator<<(
+    std::ostream& output, 
+    const Message& msgN
+);
 
 #endif
