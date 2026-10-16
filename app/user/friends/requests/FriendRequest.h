@@ -2,38 +2,36 @@
 #define FRIEND_REQUEST_H
 
 #include <iostream>
-#include "str.h"
+//#include "str.h"
 
 /**
- * @brief Solicitud de amistad enviada por un usuario a otro. 
- * 
+ * @brief Solicitud de amistad enviada por un usuario a otro.
  */
 class FriendRequest {
-private: 
-    int _senderID; 
-    int _receiverID; 
 
-public: 
+private:
+    int _senderID;
+    int _receiverID;
+
+public:
     FriendRequest();
-    FriendRequest(int senderID, int receiverID); 
+    FriendRequest(int senderID, int receiverID);
 
-    int getSenderID() const { return _senderID; }
-    int getReceiverID() const { return _receiverID; }
+    int getSenderID() const;
+    int getReceiverID() const;
 
-    bool operator==(const FriendRequest& anotherRequest) const {
-        return (
-            (_senderID == anotherRequest._senderID) &&
-            (_receiverID == anotherRequest._receiverID)
-        );
-    }
-    bool operator!=(const FriendRequest& anotherRequest) const {
-        return !(*this == anotherRequest);
-    }
-    // para amigos
-    friend std::ostream& operator<<(std::ostream& os, const FriendRequest& show);
+    bool operator==(const FriendRequest& anotherRequest) const;
+    bool operator!=(const FriendRequest& anotherRequest) const;
+
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const FriendRequest& requestN
+    );
 };
 
-// Emisor -> receptor, para pruebas 
-std::ostream& operator<<(std::ostream& os, const FriendRequest& show);
+std::ostream& operator<<(
+    std::ostream& output, 
+    const FriendRequest& requestN
+);
 
 #endif

@@ -1,13 +1,37 @@
 #include "FriendRequest.h"
 
-FriendRequest::FriendRequest():
-    _senderID(-1), _receiverID(-1) {}
+FriendRequest::FriendRequest(
+    int senderID, int receiverID
+): 
+    _senderID(senderID), 
+    _receiverID(receiverID) {}
 
-FriendRequest::FriendRequest(int senderID, int receiverID): 
-    _senderID(senderID), _receiverID(receiverID) {}
 
-// [ID emisor -> ID receptor]
-std::ostream& operator<<(std::ostream& os, const FriendRequest& r) {
-    os << "[" << r._senderID << " -> " << r._receiverID << "]";
-    return os;
+int FriendRequest::getSenderID() const {
+    return _senderID;
+}
+int FriendRequest::getReceiverID() const {
+    return _receiverID;
+}
+
+
+bool FriendRequest::operator==(
+    const FriendRequest& anotherRequest
+) const {
+    return (_senderID == anotherRequest._senderID) &&
+           (_receiverID == anotherRequest._receiverID);
+}
+bool FriendRequest::operator!=(
+    const FriendRequest& anotherRequest
+) const {
+    return !(*this == anotherRequest);
+}
+
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const FriendRequest& requestN
+) {
+    output << requestN._senderID; 
+    return output;
 }
