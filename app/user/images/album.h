@@ -1,17 +1,16 @@
 #ifndef ALBUM_H
 #define ALBUM_H
 
+#include <iostream>
 #include "str.h"
 #include "listTemplate.h"
 #include "image.h"
 
 /**
  * @brief Representa un álbum de fotos.
- * @details Cada álbum pertenece a un usuario y contiene cero o más
- *          imágenes. Tiene un nivel de privacidad que determina quién
- *          puede verlo.
  */
 class Album {
+
 private:
     str _name;              
     str _filePath;        
@@ -26,65 +25,36 @@ public:
         const str& privacy
     );
 
-    const str& getName() const { 
-        return _name; 
-    }
-    const str& getFilePath() const { 
-        return _filePath; 
-    }
-    const str& getPrivacy() const { 
-        return _privacy; 
-    }
-    const List<Image>& getImages() const { 
-        return _images; 
-    }
-    List<Image>& getImages(){ 
-        return _images; 
-    }
-    //int getImageCount() const { return _images.getSize(); }
+    const str& getName() const;
+    const str& getFilePath() const;
+    const str& getPrivacy() const;
+    const List<Image>& getImages() const;
+    List<Image>& getImages();
 
-    void setName(const str& name){ 
-        _name = name; 
-    }
-    void setFilePath(const str& path){ 
-        _filePath = path; 
-    }
-    void setPrivacy(const str& privacy){ 
-        _privacy = privacy; 
-    }
+    void setName(const str& name);
+    void setPrivacy(const str& privacy);
 
-    bool addImage(const Image& image){ 
-        return _images.add(image); 
-    }
-    bool removeImage(const Image& image){ 
-        return _images.remove(image); 
-    }
+    bool addImage(const Image& image);
+    bool removeImage(const Image& image);
 
     /**
      * @brief Verifica si una imagen pertenece al álbum.
      */
-    bool containsImage(const Image& image) const {
-        return _images.search(image);
-    }
+    bool containsImage(const Image& image) const;
 
-    bool operator==(const Album& ohterAlbum) const {
-        return _name == ohterAlbum._name;
-    }
+    bool operator==(const Album& otherAlbum) const;
+    bool operator!=(const Album& otherAlbum) const;
+    bool operator<(const Album& otherAlbum) const;
 
-    bool operator!=(const Album& ohterAlbum) const { 
-        return !(*this == ohterAlbum); 
-    }
-
-    // Temporal
-    bool operator<(const Album& ohterAlbum) const {
-        return _name < ohterAlbum._name;
-    }
-
-    void showPhotos() const;
-
-    friend std::ostream& operator<<(std::ostream& os, const Album& a);
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const Album& albumN
+    );
 };
 
-std::ostream& operator<<(std::ostream& os, const Album& a);
+std::ostream& operator<<(
+    std::ostream& output, 
+    const Album& albumN
+);
 
 #endif

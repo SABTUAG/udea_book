@@ -1,5 +1,4 @@
 #include "images/image.h"
-#include "str.h"
 
 Image::Image(
     const str& filePath, 
@@ -12,7 +11,43 @@ Image::Image(
     _filePath(filePath), 
     _likes(likes) {}
 
-std::ostream& operator<<(std::ostream& output, const Image& img){
+
+const str& Image::getPublicationDate() const {
+    return _publicationDate;
+}
+int Image::getSize() const {
+    return _size;
+}
+const str& Image::getFilePath() const {
+    return _filePath;
+}
+int Image::getLikes() const {
+    return _likes;
+}
+
+
+void Image::addLike(){
+    _likes++;
+}
+void Image::removeLike(){
+    if (_likes > 0) _likes--;
+}
+
+
+bool Image::operator==(const Image& otherImg) const {
+    return _filePath == otherImg._filePath;
+}
+bool Image::operator!=(const Image& otherImg) const {
+    return !(*this == otherImg);
+}
+bool Image::operator<(const Image& otherImg) const {
+    return _publicationDate < otherImg._publicationDate;
+}
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const Image& img
+){
     output <<img._filePath;
     return output;
 }

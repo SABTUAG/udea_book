@@ -1,35 +1,27 @@
 #ifndef FILE_MANAGEMENT_H
 #define FILE_MANAGEMENT_H
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <stdexcept>
+#include "../tools/str.h"
 #include "../tools/listTemplate.h"
 
 /**
- * @brief Para manejar el archivo txt
+ * @brief Utilidades para lectura y escritura de archivos txt
  */
-class File {
-public: 
-    /**
-     * @brief Para leer el contenido de un archivo txt
-     */
-    static bool read(std::string filePath) {
-        std::string line;
-        std::ifstream inputFile(filePath); 
-        while (std::getline(inputFile, line)) {
-            std::cout << line << '\n';
-        }
-        return true; 
-    }
+class FileManager {
 
-    /**
-     * @brief Para escribir en el archivo txt
-     */
-    static bool write() {
-        // ..
-    }
+public: 
+
+
+/**
+ * @brief Lee todas las líneas de un archivo txt. 
+ * @param filePath Ruta del archivo. 
+ * @param lines Donde se agregan las líneas.
+ * @return true si el archivo se leyo correctamente, false en el caso contrario. 
+ */
+static bool read(const str& filePath, List<str>&lines);
+
+
+
 };
 
 

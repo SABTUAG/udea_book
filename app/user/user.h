@@ -1,20 +1,18 @@
 #ifndef USER_H
 #define USER_H
 
-#include <string>
-#include "listTemplate.h"
-#include "console.h"
-#include "str.h"
-
+#include <iostream>
+#include "../../tools/str.h"
+#include "../../tools/Console.h"
 #include "friends/FriendNetwork.h"
-#include "images/gallery.h"
-#include "images/image.h"
+#include "images/Gallery.h"
 #include "messages/MessageHandling.h"
 
 /**
- * @brief Representa un usuario en la red social
+ * @brief Representa un usuario en la red social.
  */
 class User {
+
 private:
     int _id; 
     str _nameID;
@@ -25,7 +23,7 @@ private:
     str _country;
     str _registrationDate;
     FriendNetwork _friends;
-    MessageHandling _chats;
+    MessageHandling _messages;
     Gallery _gallery;
 
 public:
@@ -41,52 +39,39 @@ public:
         const str& registrationDate
     );
 
-    bool operator==(const User& otherUser) const {
-        return _nameID == otherUser._nameID; 
-    }
-    bool operator!=(const User& otherUser) const {
-        return !(*this==otherUser); 
-    }
+    int getID() const;
+    const str& getNameID() const;
+    const str& getBirthDate() const;
+    const str& getEmail() const;
+    const str& getCity() const;
+    const str& getCountry() const;
+    const str& getRegistrationDate() const;
+    FriendNetwork& getFriends();
+    const FriendNetwork& getFriends() const;
+    MessageHandling& getMessages();
+    const MessageHandling& getChats() const;
+    Gallery& getGallery();
+    const Gallery& getGallery() const;
+   
 
-    int getID() const { return _id; }
-    const str& getNameID() const { return _nameID; }
-    const str& getBirthDate() const { return _birthDate; }
-    const str& getEmail() const { return _email; }
-    const str& getCity() const { return _city; }
-    const str& getCountry() const { return _country; }
-    const str& getRegistrationDate() const { return _registrationDate; }
-    
-    void setID(int id){ 
-        _id = id; 
-    }
-    void setNameID(const str& nameID){ 
-        _nameID = nameID; 
-    }
-    void setBirthDate(const str& birthDate){ 
-        _birthDate = birthDate; 
-    }
-    void setEmail(const str& email){ 
-        _email = email; 
-    }
-    void setPassword(const str& password){ 
-        _password = password; 
-    }
-    void setCity(const str& city){ 
-        _city = city; 
-    }
-    void setCountry(const str& country){ 
-        _country = country; 
-    }
-    void setRegistrationDate(const str& registrationDate){
-        _registrationDate = registrationDate;
-    }
+    void setEmail(const str& email); 
+    void setCity(const str& city);
+    void setCountry(const str& country);
 
-    void showProfile() const; 
+    bool operator==(const User& otherUser) const;
+    bool operator!=(const User& otherUser) const;
+    bool operator<(const User& otherUser) const;
 
-    friend std::ostream& operator<<(std::ostream& os, const User& u);
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const User& u
+    );
 
 };
 
-std::ostream& operator<<(std::ostream& os, const User& u);
+std::ostream& operator<<(
+    std::ostream& output, 
+    const User& userN
+);
 
 #endif

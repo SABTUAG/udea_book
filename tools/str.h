@@ -4,159 +4,93 @@
 #include <iostream>
 
 /**
- * @brief Para emular la clase string 
- * @warning Falta agregar soporte, integrar en cantidades minimas
+ * @brief Cadena de caracteres (string propia).
+ * @warning No soporta caracteres multibyte (UTF-8).Se asume ASCII.
  */
 class str {
-private: 
-    char* _text; 
-    int _len; 
 
-    static int len(const char* text){
-        int i=0; 
-        while (text[i] != '\0') i++; 
-        return i; 
-    }
-    static char* copy(const char* text){
-        int n = len(text);
-        char* whereToCopy = new char[n+1]; 
-        for (int i=0; i<n; i++){
-            whereToCopy[i] = text[i]; 
-        }
-        whereToCopy[n] = '\0';
-        return whereToCopy; 
-    }
+private:
+    char* _text;   
+    int _len;       
 
-public: 
-    str(): _len(0) {
-        _text = new char[1]; 
-        _text[0] = '\0';
-    }
-    str(const char* text){
-        _len = len(text); 
-        _text = copy(text); 
-    }
-    str(const str& other){
-        _len = other._len; 
-        _text = copy(other._text); 
-    }
-    ~str() {
-        delete[] _text;
-    }
+    static int len(const char* text);
+    static char* copy(const char* text);
 
-    str& operator=(const char* text){
-        delete[] _text; 
-        _len = len(text); 
-        _text = copy(text); 
-        return *this; 
-    }
-    str& operator=(const str& other){
-        if (this == &other) return *this; 
-        delete[] _text; 
-        _len = other._len; 
-        _text = copy(other._text); 
-        return *this; 
-    }
+public:
+    static const int NPOS= -1;
 
-    const char* c_str() const { 
-        return _text; 
-    }
-    int len() const { 
-        return _len; 
-    }
-    char operator[](int i) const { 
-        return _text[i]; 
-    }
-    char& operator[](int i) { 
-        return _text[i]; 
-    }
+    str();
+    str(const char* text);
+    str(const str& other);
+    ~str();
+    int len() const;
+    const char* c_str() const; 
 
-    bool operator==(const str& other) const {
-        if (_len != other._len) return false; 
-        for (int i=0; i<_len; i++){
-            if (_text[i] != other._text[i]) return false; 
-        }
-        return true; 
-    }
-    bool operator==(const char* other) const {
-        int n = len(other); 
-        if (_len != n) return false; 
-        for (int i=0; i<_len; i++){
-            if(_text[i] != other[i]) return false; 
-        }
-        return true; 
-    }
-    bool operator<(const str& other) const {
-        int minLen = (_len < other._len) ? _len : other._len;
-        for (int i = 0; i < minLen; i++) {
-            if (_text[i] != other._text[i]) {
-                return (_text[i] < other._text[i]);
-            }
-        }
-        return _len < other._len;
-    }
-    bool operator!=(const str& other) const { 
-        return !(*this == other); 
-    }
-    bool operator>(const str& other) const { 
-        return other < *this; 
-    }
-    bool operator<=(const str& other) const { 
-        return !(other < *this); 
-    }
-    bool operator>=(const str& other) const { 
-        return !(*this < other); 
-    }
-    str operator+(const str& other) const {
-        str newText; 
-        delete[] newText._text; 
-        newText._len = _len + other._len; 
-        newText._text = new char[newText._len+1]; 
-        for (int i=0; i<_len; i++){
-            newText._text[i] = _text[i]; 
-        }
-        for (int i=0; i<other._len; i++){
-            newText._text[_len+i] = other._text[i]; 
-        }
-        newText._text[newText._len] = '\0'; 
-        return newText; 
-    }
-    str& operator+=(const str& other){
-        *this = *this + other; 
-        return *this; 
-    }
-    int find(const str& substr) const {
-        if (substr._len == 0) return 0; 
-        if (substr._len > _len) return -1; 
-        for (int i=0; i<=(_len-substr._len); i++){
-            bool substrInStr = true; 
-            for(int n=0; n<substr._len; n++) {
-                if (_text[i+n] != substr._text[n]){
-                    substrInStr = false; 
-                    break; 
-                }
-            }
-            if (substrInStr) return i; 
-        }
-        return -1; 
-    }
+    str& operator=(const char* text);
+    str& operator=(const str& other);
+    char operator[](int i) const;
+    char& operator[](int i);
+    bool operator==(const str& other) const;
+    bool operator==(const char* other) const;
+    bool operator!=(const str& other) const;
+    bool operator<(const str& other) const;
+    bool operator>(const str& other) const;
+    bool operator<=(const str& other) const;
+    bool operator>=(const str& other) const;
+    str operator+(const str& other) const;
+    str& operator+=(const str& other);
 
-    friend std::ostream& operator<<(std::ostream& output, const str& strToShow) {
-        output << strToShow._text;
-        return output; 
-    }
-    friend std::istream& operator>>(std::istream& input, str& strDestination) {
-        char buffer[512]; 
-        input >> buffer; 
-        strDestination = buffer; 
-        return input; 
-    }
-    inline std::istream& getline(std::istream& input, str& strInputLine) {
-        char buffer[512]; 
-        input.getline(buffer, 512); 
-        strInputLine = buffer; 
-        return input; 
-    }
+    /**
+     * @brief Busca una subcadena.
+     * @param substr Subcadena a buscar.
+     * @return Índice de la primera ocurrencia, NPOS si no se encuentra.
+     * @note Complejidad: O(n*m) peor caso.
+     */
+    int find(const str& substr) const;
+
+    /**
+     * @brief Busca un carácter.
+     * @param c Carácter a buscar.
+     * @return Índice de la primera ocurrencia, NPOS si no se encuentra.
+     * @note Complejidad: O(n).
+     */
+    int find(char c) const;
+
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const str& chars
+    );
+    friend std::istream& operator>>(
+        std::istream& input, 
+        str& chars
+    );
 };
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const str& chars
+);
+
+/**
+ * @brief Lee una palabra (token) desde un flujo de entrada.
+ * @note Se detiene en el primer whitespace. NO consume el '\n' final.
+ * @warning No mezclar con getline sin limpiar el buffer antes.
+ */
+std::istream& operator>>(
+    std::istream& input, 
+    str& chars
+);
+
+/**
+ * @brief Lee una línea completa desde un flujo de entrada.
+ * @param input Flujo de entrada.
+ * @param s Cadena destino.
+ * @return El mismo flujo, para encadenamiento.
+ * @note Consume el '\n' final. Si la lectura falla, la cadena queda vacía.
+ */
+std::istream& getline(
+    std::istream& input, 
+    str& chars
+);
 
 #endif

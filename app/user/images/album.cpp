@@ -10,21 +10,60 @@ Album::Album(
     _privacy(privacy), 
     _images() {}
 
-void Album::showPhotos() const {
-    std::cout << "Álbum: " << _name 
-              << " (" << _images.getLen() << " fotos)\n";
-    _images.forEach([](const Image& image) {
-        std::cout << "  - " << image.getFilePath() << "\n";
-    });
+
+const str& Album::getName() const {
+    return _name;
 }
-/*
-std::ostream& operator<<(std::ostream& os, const Album& a) {
-    os << "Album[" << a._name << " | ";
-    switch (a._privacy) {
-        case Privacy::PUBLIC:  os << "público";   break;
-        case Privacy::PRIVATE: os << "privado";   break;
-        case Privacy::FRIENDS: os << "amigos";    break;
-    }
-    os << " | " << a._images.getSize() << " fotos]";
-    return os;
-}*/
+const str& Album::getFilePath() const {
+    return _filePath;
+}
+const str& Album::getPrivacy() const {
+    return _privacy;
+}
+const List<Image>& Album::getImages() const {
+    return _images;
+}
+List<Image>& Album::getImages() {
+    return _images;
+}
+
+
+void Album::setName(const str& name) {
+    _name = name;
+}
+void Album::setPrivacy(const str& privacy) {
+    _privacy = privacy;
+}
+
+
+bool Album::addImage(const Image& image) {
+    return _images.add(image);
+}
+bool Album::removeImage(const Image& image) {
+    return _images.remove(image);
+}
+
+
+bool Album::containsImage(const Image& image) const {
+    return _images.search(image);
+}
+
+
+bool Album::operator==(const Album& otherAlbum) const {
+    return _name == otherAlbum._name;
+}
+bool Album::operator!=(const Album& otherAlbum) const {
+    return !(*this == otherAlbum);
+}
+bool Album::operator<(const Album& otherAlbum) const {
+    return _name < otherAlbum._name;
+}
+
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const Album& albumN
+){
+    output << albumN._filePath;
+    return output;
+}

@@ -1,6 +1,7 @@
 #ifndef GALLERY_H
 #define GALLERY_H
 
+#include <iostream>
 #include "image.h"
 #include "album.h"
 #include "listTemplate.h"
@@ -12,29 +13,35 @@
 
  */
 /**
- * @brief Para representar la galeria de un usuario
+ * @brief Para representar la galeria de un usuario.
  */
 class Gallery {
+
 private:
     Image _profilePicture;
     List<Album> _albums;
 
 public:
     Gallery();
-    Gallery(const Image& profilePicture, const List<Album>& albums);
+    Gallery(
+        const Image& profilePicture, 
+        const List<Album>& albums
+    );
 
-    // Getters
     const Image& getProfilePicture() const;
     const List<Album>& getAlbums() const;
-    List<Album>& getAlbums();   // para modificar likes en las fotos
-
+    List<Album>& getAlbums();   
     int getAlbumCount() const;
 
-    // Presentación
-    void showGallery() const;
-
-    // Debug
-    friend std::ostream& operator<<(std::ostream& os, const Gallery& g);
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const Gallery& galleryN
+    );
 };
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const Gallery& galleryN
+);
 
 #endif
