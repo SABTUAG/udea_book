@@ -1,6 +1,6 @@
 # Red Social Ude@Ebook
 
-[Ver Video Demostrativo (Próximamente disponible a partir del 16 octubre)](#)
+[Ver Video Demostrativo (Próximamente disponible a partir del 18 octubre)](#)
 
 
 
@@ -73,10 +73,11 @@ e. Un modulo encargado del acceso a los archivos, su lectura y modificación. (S
 ### D. PROBLEMAS DE DESARROLLO QUE AFRONTE
 
 * Cuando cree la lista enlazada, me di cuenta de un incoveniente, no soportaba crear una lista de clases inicializada. Entonces, mi problema como añadia varios elementos al mismo tiempo. O por lo menos evitar ese trabajo tedioso. de agregar elemento por elemento. 
-* Para el desarrollo utilice string mientras construia mi propia clase string **str**, pero el problema vino cuando pense que ya estaba lista **str** y empece a integrarla. No tenia soporte para algunos operadores, partes que tenia para lectura fallaron, entonces lo que yo hice fue, para entradas usar string, y que mi str reciba ese string y pase su contenido a su formato. 
+* Para el desarrollo utilice string mientras construia mi propia clase string **str**, pero el problema vino cuando pense que ya estaba lista **str** y empece a integrarla. No tenia soporte para algunos operadores, partes que tenia para lectura fallaron, entonces lo que yo hice fue, para entradas usar string, y que mi str reciba ese string y pase su contenido a su formato.
+* Sobre como medir los recursos con precision, 
 
 
-#### E. EVOLUCIÓN DE LA SOLUCIÓN Y CONSIDERACIONES A TENER CUENTA EN LA IMPLEMENTACION
+### E. EVOLUCIÓN DE LA SOLUCIÓN Y CONSIDERACIONES A TENER CUENTA EN LA IMPLEMENTACION
 
 1. Respecto a como y donde se guardara la información, he hecho cambios significativos.
 Primero tenia previsto crear un archivo txt por cada usuario registrado y el nombre del archivo seria el mismo que el nombre del usuario y su contenido organizado de la siguiente forma: 
