@@ -23,11 +23,12 @@ public:
     int getCount() const;
 
     bool hasReceivedAny() const;
-    bool hasReceivedFrom(int senderID) const;
+    bool hasReceivedFrom(const str& sender) const;
+    // Revisar despues
     const FriendRequest& getAt(int index) const;
 
     bool addReceived(const FriendRequest& request);
-    bool removeReceived(int senderID);
+    bool removeReceived(const str& sender);
 
     friend std::ostream& operator<<(
         std::ostream& output, 

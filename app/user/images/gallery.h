@@ -35,13 +35,13 @@ public:
 
     friend std::ostream& operator<<(
         std::ostream& output, 
-        const Gallery& galleryN
+        const Gallery& gallery
     );
 };
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const Gallery& galleryN
+    const Gallery& gallery
 );
 
 #endif

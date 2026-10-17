@@ -23,6 +23,7 @@ public:
     str(const char* text);
     str(const str& other);
     ~str();
+
     int len() const;
     const char* c_str() const; 
 
@@ -47,7 +48,6 @@ public:
      * @note Complejidad: O(n*m) peor caso.
      */
     int find(const str& substr) const;
-
     /**
      * @brief Busca un carácter.
      * @param c Carácter a buscar.
@@ -68,7 +68,7 @@ public:
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const str& chars
+    const str& string
 );
 
 /**
@@ -78,7 +78,7 @@ std::ostream& operator<<(
  */
 std::istream& operator>>(
     std::istream& input, 
-    str& chars
+    str& string
 );
 
 /**
@@ -90,7 +90,7 @@ std::istream& operator>>(
  */
 std::istream& getline(
     std::istream& input, 
-    str& chars
+    str& string
 );
 
 #endif

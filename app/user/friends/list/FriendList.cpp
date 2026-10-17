@@ -1,31 +1,41 @@
 #include "FriendList.h"
 
 FriendList::FriendList(): 
-    _friendIDs() {}
+    _friends() {}
+
+FriendList::FriendList(const List<str>& friends):
+    _friends(friends) {}
 
 
-const List<int>& FriendList::getIDs() const {
-    return _friendIDs;
+const List<str>& FriendList::getNameIDs() const {
+    return _friends;
 }
-List<int>& FriendList::getIDs() {
-    return _friendIDs;
+List<str>& FriendList::getNameIDs(){
+    return _friends;
 }
 
 
-bool FriendList::contains(int id) const {
-    return _friendIDs.search(id);
+bool FriendList::contains(const str& nameID) const {
+    return _friends.search(nameID);
 }
-bool FriendList::add(int id) {
-    return _friendIDs.add(id);
+bool FriendList::add(const str& nameID){
+    return _friends.add(nameID);
 }
-bool FriendList::remove(int id) {
-    return _friendIDs.remove(id);
+bool FriendList::remove(const str& nameID){
+    return _friends.remove(nameID);
 }
+
 
 std::ostream& operator<<(
     std::ostream& output, 
     const FriendList& friendlist
 ){
+    int n = 1; 
     output<<"- Amigos -\n"; 
+    friendlist._friends.forEach(
+        [&](const str& nameID){
+            output << n++ << ")" << nameID << "\n"; 
+        }
+    ); 
     return output; 
 }

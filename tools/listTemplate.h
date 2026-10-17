@@ -29,20 +29,9 @@ private:
     Node<Object>* _head;
     int _len; 
 
-    // Iteración común para forEach
-    template <typename Function>
-    void forEachNode(Function action){
-        Node<Object>* current = _head;
-        while (current != nullptr){
-            action (current->value);
-            current = current->next;
-        }
-    }
-
 public:
 
     List(): _head(nullptr), _len(0) {}
-
     ~List() {
         Node<Object>* current = _head;
         while (current != nullptr){
@@ -52,9 +41,11 @@ public:
         }
     }
 
+
     int getLen() const { 
         return _len; 
     }
+
 
     Object& operator[](int index){
         Node<Object>* current = _head;
@@ -63,7 +54,6 @@ public:
         }
         return current->value;
     }
-
     const Object& operator[](int index) const {
         Node<Object>* current = _head;
         for (int i = 0; i < index; i++){
@@ -71,6 +61,7 @@ public:
         }
         return current->value;
     }
+
 
     bool add(const Object& element){
         if (search(element)) return false;
@@ -86,7 +77,6 @@ public:
         _len++; 
         return true;
     }
-
     bool remove(const Object& element){
         if (_head==nullptr) return false;
         if (_head->value == element){
@@ -112,7 +102,6 @@ public:
         }
         return false;
     }
-
     /**
      * @brief Buscar un elemento dentro de la lista. 
      * @param element Elemento a buscar.
@@ -130,6 +119,7 @@ public:
         return false;
     }
 
+    
     /**
      * @brief Aplica una función a cada elemento. 
      * @tparam Function Tipo invocable con firma. 
@@ -138,16 +128,24 @@ public:
      */
     template <typename Function>
     void forEach(Function action){
-        forEachNode(action); 
+        Node<Object>* current = _head;
+        while (current != nullptr){
+            action (current->value);
+            current = current->next;
+        }
     }
 
     /**
      * @note **Versión const**: Se invoca en listas no mutables. 
      */
-//    template <typename Function>
-//    void forEach(Function action) const {
-//        forEachNode(action); 
-//    }  
+    template <typename Function>
+    void forEach(Function action) const{
+        Node<Object>* current = _head;
+        while (current != nullptr){
+            action (current->value);
+            current = current->next;
+        }
+    }
 };
 
 #endif

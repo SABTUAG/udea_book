@@ -2,25 +2,27 @@
 #define FRIEND_LIST_H
 
 #include <iostream>
+#include "str.h"
 #include "listTemplate.h"
 
 /**
- * @brief Gestiona los amigos del usuario por IDs.
+ * @brief Gestiona los amigos del usuario por nameIDs.
  */
 class FriendList {
     
 private:
-    List<int> _friendIDs;
+    List<str> _friends; 
 
 public:
     FriendList();
+    FriendList(const List<str>& friends); 
 
-    const List<int>& getIDs() const;
-    List<int>& getIDs();
+    const List<str>& getNameIDs() const;
+    List<str>& getNameIDs();
 
-    bool contains(int id) const;
-    bool add(int id);
-    bool remove(int id);
+    bool contains(const str& nameID) const;
+    bool add(const str& nameID);
+    bool remove(const str& nameID);
 
     friend std::ostream& operator<<(
         std::ostream& output, 

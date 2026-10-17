@@ -18,7 +18,6 @@ private:
     List<Image> _images;    
 
 public:
-    Album();
     Album(
         const str& name, 
         const str& filepath, 
@@ -48,13 +47,13 @@ public:
 
     friend std::ostream& operator<<(
         std::ostream& output, 
-        const Album& albumN
+        const Album& album
     );
 };
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const Album& albumN
+    const Album& album
 );
 
 #endif

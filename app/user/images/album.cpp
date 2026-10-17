@@ -28,18 +28,18 @@ List<Image>& Album::getImages() {
 }
 
 
-void Album::setName(const str& name) {
+void Album::setName(const str& name){
     _name = name;
 }
-void Album::setPrivacy(const str& privacy) {
+void Album::setPrivacy(const str& privacy){
     _privacy = privacy;
 }
 
 
-bool Album::addImage(const Image& image) {
+bool Album::addImage(const Image& image){
     return _images.add(image);
 }
-bool Album::removeImage(const Image& image) {
+bool Album::removeImage(const Image& image){
     return _images.remove(image);
 }
 
@@ -62,8 +62,8 @@ bool Album::operator<(const Album& otherAlbum) const {
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const Album& albumN
+    const Album& album
 ){
-    output << albumN._filePath;
+    output << album._filePath;
     return output;
 }

@@ -23,7 +23,7 @@ std::ostream& operator<<(
     std::ostream& output, 
     const FriendNetwork& network
 ){
-    output << "Gestión de amigos y solicitudes\n";
+    output << "*** Red de amistad ***\n";
     output << network._friends;
     output << network._requests;
     return output;

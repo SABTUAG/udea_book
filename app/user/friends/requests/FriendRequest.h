@@ -2,7 +2,7 @@
 #define FRIEND_REQUEST_H
 
 #include <iostream>
-//#include "str.h"
+#include "str.h"
 
 /**
  * @brief Solicitud de amistad enviada por un usuario a otro.
@@ -10,28 +10,27 @@
 class FriendRequest {
 
 private:
-    int _senderID;
-    int _receiverID;
+    str _sender; 
+    str _receiver; 
 
 public:
-    FriendRequest();
-    FriendRequest(int senderID, int receiverID);
+    FriendRequest(const str& sender, const str& receiver);
 
-    int getSenderID() const;
-    int getReceiverID() const;
+    const str& getSender() const;
+    const str& getReceiver() const;
 
     bool operator==(const FriendRequest& anotherRequest) const;
     bool operator!=(const FriendRequest& anotherRequest) const;
 
     friend std::ostream& operator<<(
         std::ostream& output, 
-        const FriendRequest& requestN
+        const FriendRequest& request
     );
 };
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const FriendRequest& requestN
+    const FriendRequest& request
 );
 
 #endif

@@ -27,12 +27,14 @@ int Gallery::getAlbumCount() const {
 
 
 std::ostream& operator<<(
-    std::ostream& output, const Gallery& galleryN
+    std::ostream& output, const Gallery& gallery
 ){
     int n = 1;
-    galleryN._albums.forEach([&](const Album& album) {
-        output << n++ << ") " << album << "\n";
-    });
-    output << n++ << ") " << galleryN._profilePicture<< "\n";
+    gallery._albums.forEach(
+        [&](const Album& album){
+            output << n++ << ") " << album << "\n";
+        }
+    );
+    output << n++ << ") " << gallery._profilePicture<< "\n";
     return output;
 }
