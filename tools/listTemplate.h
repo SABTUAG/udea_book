@@ -144,10 +144,10 @@ public:
     /**
      * @note **Versión const**: Se invoca en listas no mutables. 
      */
-    template <typename Function>
-    void forEach(Function action) const {
-        forEachNode(action); 
-    }  
+//    template <typename Function>
+//    void forEach(Function action) const {
+//        forEachNode(action); 
+//    }  
 };
 
 #endif

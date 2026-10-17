@@ -1,7 +1,7 @@
+#include <iostream>
 #include "tools/listTemplate.h"
 #include "tools/str.h"
 #include "databases/fileManager.h"
-#include <iostream>
 
 int main(){
     str database = "databases/users.txt"; 

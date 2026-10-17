@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../../tools/str.h"
+#include "../../tools/date.h"
 #include "friends/FriendNetwork.h"
 #include "images/Gallery.h"
 #include "messages/MessageHandling.h"
@@ -40,7 +41,6 @@ private:
     Gallery _gallery;
 
 public:
-    User(); 
     User(
         int id, 
         const str& nameID, 

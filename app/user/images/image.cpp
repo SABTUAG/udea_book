@@ -1,4 +1,4 @@
-#include "images/image.h"
+#include "image.h"
 
 Image::Image(
     const str& filePath, 

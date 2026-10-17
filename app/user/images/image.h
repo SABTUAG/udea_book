@@ -16,7 +16,6 @@ private:
     int _likes;
 
 public:
-    Image();
     Image(
         const str& filepath,
         const str& publicationDate,
