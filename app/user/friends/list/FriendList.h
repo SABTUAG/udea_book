@@ -1,6 +1,7 @@
 #ifndef FRIEND_LIST_H
 #define FRIEND_LIST_H
 
+#include <iostream>
 #include "listTemplate.h"
 
 /**
@@ -20,6 +21,16 @@ public:
     bool contains(int id) const;
     bool add(int id);
     bool remove(int id);
+
+    friend std::ostream& operator<<(
+        std::ostream& output, 
+        const FriendList& friendlist
+    ); 
 };
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const FriendList& friendlist
+);
 
 #endif

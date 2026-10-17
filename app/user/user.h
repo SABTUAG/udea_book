@@ -3,13 +3,26 @@
 
 #include <iostream>
 #include "../../tools/str.h"
-#include "../../tools/Console.h"
 #include "friends/FriendNetwork.h"
 #include "images/Gallery.h"
 #include "messages/MessageHandling.h"
 
 /**
- * @brief Representa un usuario en la red social.
+ * @brief Representa un usuario en la red Social udeabook.
+ * 
+ * @details Almacena los datos personales del usuario y se
+ * compone por subistemas que modelan su actividad en la 
+ * plataforma. Los subsistemas son: red de amigos, gestor de 
+ * mensajes y galería de imágenes.
+ * 
+ * Los usuarios se identifican por un id numérico único, y las 
+ * relaciones entre ellos se guardan por medio de estos ids, no 
+ * por punteros. Esto simplifica la carga desde archivo y evita 
+ * dependencias circulares entre clases.
+ * 
+ * Los subsistemas se almacenan por composición: si la cuenta
+ * del usuario es destruida, sus subsistemas también, 
+ * liberando toda la memoria asociada de forma automática.
  */
 class User {
 
@@ -49,7 +62,7 @@ public:
     FriendNetwork& getFriends();
     const FriendNetwork& getFriends() const;
     MessageHandling& getMessages();
-    const MessageHandling& getChats() const;
+    const MessageHandling& getMessages() const;
     Gallery& getGallery();
     const Gallery& getGallery() const;
    
@@ -64,14 +77,14 @@ public:
 
     friend std::ostream& operator<<(
         std::ostream& output, 
-        const User& u
+        const User& user
     );
 
 };
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const User& userN
+    const User& user
 );
 
 #endif

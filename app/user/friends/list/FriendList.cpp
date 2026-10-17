@@ -21,3 +21,11 @@ bool FriendList::add(int id) {
 bool FriendList::remove(int id) {
     return _friendIDs.remove(id);
 }
+
+std::ostream& operator<<(
+    std::ostream& output, 
+    const FriendList& friendlist
+){
+    output<<"- Amigos -\n"; 
+    return output; 
+}

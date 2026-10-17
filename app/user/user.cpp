@@ -26,66 +26,51 @@ User::User(
 int User::getID() const {
     return _id;
 }
-
 const str& User::getNameID() const {
     return _nameID;
 }
-
 const str& User::getBirthDate() const {
     return _birthDate;
 }
-
 const str& User::getEmail() const {
     return _email;
 }
-
 const str& User::getCity() const {
     return _city;
 }
-
 const str& User::getCountry() const {
     return _country;
 }
-
 const str& User::getRegistrationDate() const {
     return _registrationDate;
 }
-
-FriendNetwork& User::getFriends() {
+FriendNetwork& User::getFriends(){
     return _friends;
 }
-
 const FriendNetwork& User::getFriends() const {
     return _friends;
 }
-
-MessageHandling& User::getMessages() {
+MessageHandling& User::getMessages(){
     return _messages;
 }
-
-const MessageHandling& User::getChats() const {
+const MessageHandling& User::getMessages() const {
     return _messages;
 }
-
-Gallery& User::getGallery() {
+Gallery& User::getGallery(){
     return _gallery;
 }
-
 const Gallery& User::getGallery() const {
     return _gallery;
 }
 
 
-
-void User::setEmail(const str& email) {
+void User::setEmail(const str& email){
     _email = email;
 }
-
-void User::setCity(const str& city) {
+void User::setCity(const str& city){
     _city = city;
 }
-
-void User::setCountry(const str& country) {
+void User::setCountry(const str& country){
     _country = country;
 }
 
@@ -94,11 +79,9 @@ void User::setCountry(const str& country) {
 bool User::operator==(const User& otherUser) const {
     return _nameID == otherUser._nameID;
 }
-
 bool User::operator!=(const User& otherUser) const {
     return !(*this == otherUser);
 }
-
 bool User::operator<(const User& otherUser) const {
     return _id < otherUser._id;
 }
@@ -106,8 +89,8 @@ bool User::operator<(const User& otherUser) const {
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const User& userN
+    const User& user
 ){
-    output << userN._nameID;
+    output << user._nameID;
     return output;
 }
