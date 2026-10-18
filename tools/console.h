@@ -32,7 +32,8 @@ public:
      */
     static str inputStr(
         const char* prompt, 
-        const str& validChars
+        const str& validChars, 
+        int maxLength
     ); 
 
     /**

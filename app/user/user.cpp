@@ -1,7 +1,50 @@
 #include "User.h"
 
+str extractValue(
+    const str& block, 
+    const str& key)
+{
+    int pos=block.find(key);
+    if (pos == str::NPOS) return "";
+    int start = pos + key.len();
+    int end = start;
+    
+    // Avanzamos hasta encontrar un ';', un salto de línea o un corchete
+    while (
+        (end < block.len()) && 
+        (block[end] != ';') && 
+        (block[end] != '\n') && 
+        (block[end] != '[')
+    ) end++;
+    
+    str result = "";
+    for (int i=start; i<end; i++){
+        if (block[i]!='\r' && block[i]!=' '){
+            result+=block[i];
+        }
+    }
+    return result;
+}
+
+
+User::User(const str& block){
+    // 1. Extraer los datos básicos
+    str nameID = extractValue(block, "NAMEID:");
+    str birthDate = extractValue(block, "BIRTHDATE:");
+    str email = extractValue(block, "EMAIL:");
+    str password = extractValue(block, "PASSWORD:");
+    str city = extractValue(block, "CITY:");
+    str country = extractValue(block, "COUNTRY:");
+    str regDate = extractValue(block, "REGISTRATIONDATE:");
+    _nameID = nameID;
+    _birthDate = birthDate;
+    _email = email;
+    _password = password;
+    _city = city;
+    _country = country;
+    _registrationDate = regDate;
+}
 User::User(
-    int id, 
     const str& nameID, 
     const str& birthDate, 
     const str& email,
@@ -10,8 +53,6 @@ User::User(
     const str& country,
     const str& registrationDate
 ): 
-    _id(id), 
-    _nameID(nameID), 
     _birthDate(birthDate), 
     _email(email),
     _password(password), 
@@ -23,9 +64,6 @@ User::User(
     _gallery() {}
 
 
-int User::getID() const {
-    return _id;
-}
 const str& User::getNameID() const {
     return _nameID;
 }

@@ -2,6 +2,7 @@
 #define STR_H
 
 #include <iostream>
+#include <listTemplate.h>
 
 /**
  * @brief Cadena de caracteres (string propia).
@@ -40,21 +41,13 @@ public:
     bool operator>=(const str& other) const;
     str operator+(const str& other) const;
     str& operator+=(const str& other);
+    str& operator+=(char c); 
 
-    /**
-     * @brief Busca una subcadena.
-     * @param substr Subcadena a buscar.
-     * @return Índice de la primera ocurrencia, NPOS si no se encuentra.
-     * @note Complejidad: O(n*m) peor caso.
-     */
     int find(const str& substr) const;
-    /**
-     * @brief Busca un carácter.
-     * @param c Carácter a buscar.
-     * @return Índice de la primera ocurrencia, NPOS si no se encuentra.
-     * @note Complejidad: O(n).
-     */
     int find(char c) const;
+    str substr(int start, int lenght) const; 
+    List<str> split(char delimiter) const; 
+    str strip() const; 
 
     friend std::ostream& operator<<(
         std::ostream& output, 

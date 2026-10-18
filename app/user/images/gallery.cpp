@@ -32,9 +32,9 @@ std::ostream& operator<<(
     int n = 1;
     gallery._albums.forEach(
         [&](const Album& album){
-            output << n++ << ") " << album << "\n";
+            output<<n++<<") "<<album<<"\n";
         }
     );
-    output << n++ << ") " << gallery._profilePicture<< "\n";
+    output<<n++<< ") "<<gallery._profilePicture<<"\n";
     return output;
 }

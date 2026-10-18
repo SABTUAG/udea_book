@@ -49,14 +49,14 @@ public:
 
     Object& operator[](int index){
         Node<Object>* current = _head;
-        for (int i = 0; i < index; i++){
+        for (int i=0; i<index; i++){
             current = current->next;
         }
         return current->value;
     }
     const Object& operator[](int index) const {
-        Node<Object>* current = _head;
-        for (int i = 0; i < index; i++){
+        Node<Object>* current=_head;
+        for (int i=0; i<index; i++){
             current = current->next;
         }
         return current->value;
@@ -65,14 +65,14 @@ public:
 
     bool add(const Object& element){
         if (search(element)) return false;
-        Node<Object>* newElement = new Node<Object>(element);
-        if (_head==nullptr) _head = newElement;
+        Node<Object>* newElement=new Node<Object>(element);
+        if (_head==nullptr) _head=newElement;
         else {
-            Node<Object>* current = _head;
+            Node<Object>* current=_head;
             while (current->next != nullptr){
-                current = current->next;
+                current=current->next;
             }
-            current->next = newElement;
+            current->next=newElement;
         }
         _len++; 
         return true;
@@ -80,8 +80,8 @@ public:
     bool remove(const Object& element){
         if (_head==nullptr) return false;
         if (_head->value == element){
-            Node<Object>* headDelete = _head;
-            _head = _head->next;
+            Node<Object>* headDelete=_head;
+            _head=_head->next;
             delete headDelete;
             _len--; 
             return true;
@@ -89,13 +89,13 @@ public:
         Node<Object>* current=_head;
         while (
             (current->next != nullptr) && 
-            !(current->next->value == element)
+            !(current->next->value==element)
         ){
-            current = current->next;
+            current=current->next;
         }
         if (current->next != nullptr){
-            Node<Object>* elementDelete = current->next;
-            current->next = current->next->next;
+            Node<Object>* elementDelete=current->next;
+            current->next=current->next->next;
             delete elementDelete;
             _len--; 
             return true;
@@ -113,8 +113,8 @@ public:
     bool search(const Object& element) const {
         Node<Object>* current = _head;
         while (current != nullptr){
-            if (current->value == element) return true;
-            current = current->next;
+            if (current->value==element)return true;
+            current=current->next;
         }
         return false;
     }

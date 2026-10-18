@@ -5,7 +5,19 @@
 #include "str.h"
 
 /**
- * @brief Representa un mensaje enviado por un usuario a otro usuario.
+ * @brief Representa un mensaje enviado entre dos usuarios.
+ * 
+ * Almacena el nameID del emisor y del receptor, el 
+ * texto del mensaje, la fecha de envío y su estado de lectura.
+ * 
+ * Es necesario guardar tanto al emisor como al receptor porque 
+ * el mensaje se registra en dos lugares distintos: en el 
+ * historial de enviados del emisor y en la bandeja de 
+ * recibidos del receptor. Al mostrar la bandeja, se requiere 
+ * saber quién envió el mensaje.
+ * 
+ * El estado de lectura solo aplica para los mensajes recibidos, 
+ * permitiendo identificar cuáles son nuevos.
  */
 class Message {
 

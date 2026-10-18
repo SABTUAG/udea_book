@@ -10,7 +10,7 @@
 /users/(sub-ruta-X-fija)/juanito76/albums/Cartagena2026/Malecon2612.png
 /users/(sub-ruta-X-fija)/juanito76/albums/Cartagena2026/Bocagrande1.png
 /users/(sub-ruta-X-fija)/juanito76/albums/profile.png
-
+/udeabook/users/usuario/albums/profile.png
  */
 /**
  * @brief Para representar la galeria de un usuario.

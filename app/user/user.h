@@ -11,7 +11,7 @@
 /**
  * @brief Representa un usuario en la red Social udeabook.
  * 
- * @details Almacena los datos personales del usuario y se
+ * Almacena los datos personales del usuario y se
  * compone por subistemas que modelan su actividad en la 
  * plataforma. Los subsistemas son: red de amigos, gestor de 
  * mensajes y galería de imágenes.
@@ -27,8 +27,7 @@
  */
 class User {
 
-private:
-    int _id; 
+private: 
     str _nameID;
     str _birthDate;
     str _email;
@@ -41,8 +40,8 @@ private:
     Gallery _gallery;
 
 public:
-    User(
-        int id, 
+    User(const str& block);
+    User( 
         const str& nameID, 
         const str& birthDate, 
         const str& email,
@@ -52,7 +51,7 @@ public:
         const str& registrationDate
     );
 
-    int getID() const;
+    
     const str& getNameID() const;
     const str& getBirthDate() const;
     const str& getEmail() const;
