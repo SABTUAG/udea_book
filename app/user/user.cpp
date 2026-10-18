@@ -1,13 +1,18 @@
 #include "User.h"
 
-str extractValue(const str& block, const str& key) {
+// ==========================================
+// FUNCIONES AUXILIARES DE PARSEO
+// ==========================================
+
+// Extrae el valor de algo como "NAMEID:juanito76;"
+static str extractValue(const str& block, const str& key) {
     int pos = block.find(key);
     if (pos == str::NPOS) return "";
-
+    
     int start = pos + key.len();
     int end = start;
     
-    // 1. Buscar el final del valor
+    // Avanzamos hasta encontrar un ';', un salto de línea o un corchete
     while (
         (end < block.len()) && 
         (block[end] != ';') && 
@@ -17,31 +22,64 @@ str extractValue(const str& block, const str& key) {
         end++;
     }
     
-    // 2. Extraer la subcadena de un solo golpe usando substr (Mucho más rápido)
+    // Extraemos el texto y le quitamos espacios en blanco de los bordes
     str rawValue = block.substr(start, end - start);
-    
-    // 3. Limpiar espacios en blanco y '\r' de los extremos usando strip()
     return rawValue.strip();
 }
 
-
-User::User(const str& block){
-    // 1. Extraer los datos básicos
-    str nameID = extractValue(block, "NAMEID:");
-    str birthDate = extractValue(block, "BIRTHDATE:");
-    str email = extractValue(block, "EMAIL:");
-    str password = extractValue(block, "PASSWORD:");
-    str city = extractValue(block, "CITY:");
-    str country = extractValue(block, "COUNTRY:");
-    str regDate = extractValue(block, "REGISTRATIONDATE:");
-    _nameID = nameID;
-    _birthDate = birthDate;
-    _email = email;
-    _password = password;
-    _city = city;
-    _country = country;
-    _registrationDate = regDate;
+// Extrae el texto que está entre corchetes: FRIENDNETWORK[ ... ]
+static str extractBlock(const str& block, const str& key) {
+    int pos = block.find(key);
+    if (pos == str::NPOS) return "";
+    
+    // Recortamos el bloque para empezar a buscar desde la palabra clave
+    str subBlock = block.substr(pos, block.len() - pos);
+    
+    int start = subBlock.find('[');
+    int end = subBlock.find(']');
+    
+    if (start == str::NPOS || end == str::NPOS) return "";
+    return subBlock.substr(start + 1, end - start - 1);
 }
+
+// ==========================================
+// CONSTRUCTORES
+// ==========================================
+
+User::User(): 
+    _nameID(""), 
+    _birthDate(""), 
+    _email(""), 
+    _password(""), 
+    _city(""), 
+    _country(""), 
+    _registrationDate(""),
+    _friends(), 
+    _messages(), 
+    _gallery() {}
+
+User::User(const str& block) {
+    // 1. Extraer datos básicos
+    _nameID = extractValue(block, "NAMEID:");
+    _birthDate = extractValue(block, "BIRTHDATE:");
+    _email = extractValue(block, "EMAIL:");
+    _password = extractValue(block, "PASSWORD:");
+    _city = extractValue(block, "CITY:");
+    _country = extractValue(block, "COUNTRY:");
+    _registrationDate = extractValue(block, "REGISTRATIONDATE:");
+
+    // 2. Extraer los sub-bloques [ ... ]
+    str friendsBlock = extractBlock(block, "FRIENDNETWORK");
+    str messagesBlock = extractBlock(block, "MESSAGESHANDLING");
+    str galleryBlock = extractBlock(block, "GALLERY");
+
+    // 3. Construir los subsistemas pasándoles su texto
+    // (Asumiendo que ya agregaste los constructores que reciben str en cada uno)
+    _friends = FriendNetwork(friendsBlock);
+    _messages = MessageHandling(_nameID, messagesBlock);
+    _gallery = Gallery(galleryBlock);
+}
+
 User::User(
     const str& nameID, 
     const str& birthDate, 
@@ -62,6 +100,9 @@ User::User(
     _messages(), 
     _gallery() {}
 
+// ==========================================
+// GETTERS Y SETTERS
+// ==========================================
 
 const str& User::getNameID() const {
     return _nameID;
@@ -100,7 +141,6 @@ const Gallery& User::getGallery() const {
     return _gallery;
 }
 
-
 void User::setEmail(const str& email){
     _email = email;
 }
@@ -111,7 +151,9 @@ void User::setCountry(const str& country){
     _country = country;
 }
 
-
+// ==========================================
+// OPERADORES
+// ==========================================
 
 bool User::operator==(const User& otherUser) const {
     return _nameID == otherUser._nameID;
@@ -122,7 +164,6 @@ bool User::operator!=(const User& otherUser) const {
 bool User::operator<(const User& otherUser) const {
     return _registrationDate < otherUser._registrationDate;
 }
-
 
 std::ostream& operator<<(
     std::ostream& output, 

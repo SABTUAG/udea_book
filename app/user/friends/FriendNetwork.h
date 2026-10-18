@@ -2,6 +2,7 @@
 #define NETWORK_OF_FRIENDS_H
 
 #include <iostream>
+#include "../tools/str.h"
 #include "list/FriendList.h"
 #include "requests/FriendRequestHandler.h"
 
@@ -31,6 +32,7 @@ private:
 
 public:
     FriendNetwork();
+    FriendNetwork(const str& block); 
 
     FriendList& getFriends();
     const FriendList& getFriends() const;

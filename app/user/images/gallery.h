@@ -27,6 +27,7 @@ public:
         const Image& profilePicture, 
         const List<Album>& albums
     );
+    Gallery(const str& block); // <--- Agrega este
 
     const Image& getProfilePicture() const;
     const List<Album>& getAlbums() const;

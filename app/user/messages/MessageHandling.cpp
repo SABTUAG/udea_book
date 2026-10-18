@@ -1,42 +1,48 @@
 #include "MessageHandling.h"
-
+// Función auxiliar para extraer texto entre paréntesis
+str extractParens(const str& text, const str& key) {
+    int pos = text.find(key);
+    if (pos == str::NPOS) return "";
+    
+    // Recortamos el texto para buscar desde la palabra clave
+    str subText = text.substr(pos, text.len() - pos);
+    
+    int start = subText.find('(');
+    int end = subText.find(')');
+    
+    if (start == str::NPOS || end == str::NPOS) return "";
+    return subText.substr(start + 1, end - start - 1);
+}
 MessageHandling::MessageHandling(): 
     _sent(), 
     _received() {}
-MessageHandling::MessageHandling(
-    const str& ownerNameID, 
-    const str& content
-): 
-    _sent(), 
-    _received() 
-{
-    List<str> lineas = content.split('\n');
-    lineas.forEach([&](const str& lineaOriginal) {
-        str linea = lineaOriginal.strip(); // Quita \r y espacios
-        if (linea.len() == 0) return;
-
-        // Formato esperado: sender|receiver|texto|fecha|read
-        List<str> campos = linea.split('|');
-        
-        if (campos.getLen() >= 5) {
-            str sender = campos[0].strip();
-            str receiver = campos[1].strip();
-            str texto = campos[2].strip();
-            str fecha = campos[3].strip();
-            bool read = (campos[4].strip() == "1" || campos[4].strip() == "true");
-
-            Message msg(sender, receiver, texto, fecha, read);
-
-            // Si el dueño es el emisor, va a enviados. Si es el receptor, a recibidos.
-            if (sender == ownerNameID) {
-                _sent.add(msg);
-            } else if (receiver == ownerNameID) {
-                _received.add(msg);
+MessageHandling::MessageHandling(const str& ownerNameID, const str& block) {
+    // 1. Mensajes Enviados: SENT: (carlos|Hola|2026-10-15);
+    str sentStr = extractParens(block, "SENT:");
+    if (sentStr.len() > 0) {
+        List<str> msgs = sentStr.split(';');
+        msgs.forEach([&](const str& m) {
+            List<str> f = m.split('|');
+            if (f.getLen() >= 3) {
+                // Emisor soy yo, receptor es f[0]
+                _sent.add(Message(ownerNameID, f[0].strip(), f[1].strip(), f[2].strip(), true));
             }
-        }
-    });
-}
+        });
+    }
 
+    // 2. Mensajes Recibidos: RECEIVER: (carlos|Todo bien|2026-10-15)
+    str recvStr = extractParens(block, "RECEIVER:");
+    if (recvStr.len() > 0) {
+        List<str> msgs = recvStr.split(';');
+        msgs.forEach([&](const str& m) {
+            List<str> f = m.split('|');
+            if (f.getLen() >= 3) {
+                // Emisor es f[0], receptor soy yo
+                _received.add(Message(f[0].strip(), ownerNameID, f[1].strip(), f[2].strip(), false));
+            }
+        });
+    }
+}
 
 const List<Message>& MessageHandling::getSent() const {
     return _sent;

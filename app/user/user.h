@@ -50,6 +50,7 @@ public:
         const str& country,
         const str& registrationDate
     );
+    User(); 
 
     
     const str& getNameID() const;

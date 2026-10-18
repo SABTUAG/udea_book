@@ -18,7 +18,7 @@ public:
     MessageHandling();
     MessageHandling(
         const str& ownerNameID, 
-        const str& content
+        const str& block
     );
 
     const List<Message>& getSent() const;
