@@ -178,6 +178,7 @@ CMakeFiles/udeaBook.dir/app/plataform.cpp.obj: \
  C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/requests/FriendRequestHandler.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/requests/FriendRequest.h \
+ C:\SoftwareCoding\Projects\udeaBook\app\user/friends/suggestions/suggestions.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/images/gallery.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/images/image.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/images/album.h \
@@ -188,4 +189,5 @@ CMakeFiles/udeaBook.dir/app/plataform.cpp.obj: \
  C:/SoftwareCoding/Projects/udeaBook/tools/date.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/FriendNetwork.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/images/Gallery.h \
- C:\SoftwareCoding\Projects\udeaBook\app\user/messages/MessageHandling.h
+ C:\SoftwareCoding\Projects\udeaBook\app\user/messages/MessageHandling.h \
+ C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/ctime

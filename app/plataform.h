@@ -20,7 +20,8 @@ private:
     User* _currentUser;
     bool _profilePicsUpdated; // Para permitir actualizar fotos solo 1 vez
 
-    void loadUsers(const str& database); 
+    void loadUsers(const str& database);
+    bool loginUser(); 
     
     // Funcionalidades internas
     void menuAmistades();

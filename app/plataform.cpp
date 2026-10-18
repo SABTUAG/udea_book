@@ -2,25 +2,57 @@
 #include <cstdlib>
 #include <ctime>
 
-Plataform::Plataform(const str& databasePath) : _currentUser(nullptr), _profilePicsUpdated(false) {
+Plataform::Plataform(const str& databasePath): 
+    _currentUser(nullptr), 
+    _profilePicsUpdated(false)
+{
     srand(time(0)); // Semilla para aleatorios
     loadUsers(databasePath); 
 }
 
 void Plataform::loadUsers(const str& database){
     List<str> blocks; 
-    if (!FileManager::read(database, blocks)) return; 
-    blocks.forEach([&](const str& block){
-        User newUser(block); 
-        _users.add(newUser);
-    }); 
+    if (!FileManager::read(database,blocks)) return; 
+    blocks.forEach(
+        [&](const str& block){
+            User newUser(block); 
+            _users.add(newUser);
+        }
+    ); 
+}
+
+bool Plataform::loginUser(){
+    std::cout<<"** Iniciar sesion **"<<std::endl;
+    bool validUser = false;  
+    while(!validUser){
+        str nameID=Console::inputStr(
+            "Usuario: ", 
+            "abcdefghijklmnopqrstuvwxyz0123456789", 
+            50
+        );
+        _currentUser = findUserByName(nameID); 
+        if (_currentUser == nullptr){
+            std::cout<<"Usuario no encontrado"<<std::endl; 
+        }
+    }
+    str pass=Console::inputStr(
+        "Contrasena: ", 
+        "abcdefghijklmnopqrstuvwxyz0123456789", 
+        50
+    );
+    if (_currentUser->getPassword() != pass) {
+        std::cout<<"Contrasena incorrecta.\n";
+    } 
+    return true; 
 }
 
 User* Plataform::findUserByName(const str& nameID){
     User* found = nullptr;
-    _users.forEach([&](User& user){
-        if (user.getNameID() == nameID) found = &user;
-    });
+    _users.forEach(
+        [&](User& user){
+            if (user.getNameID()==nameID) found=&user;
+        }
+    );
     return found;
 }
 
@@ -28,38 +60,43 @@ User* Plataform::findUserByName(const str& nameID){
 // MENÚ PRINCIPAL (LOGIN Y BUCLE)
 // ==========================================
 void Plataform::start() {
-    std::cout << "=== BIENVENIDO A UDE@BOOK ===\n";
-    str name = Console::inputStr("Usuario: ", "abcdefghijklmnopqrstuvwxyz0123456789", 50);
+    std::cout << "** INGRESAR A UDEABOOK **\n";
+    str name = Console::inputStr(
+        "Usuario: ", 
+        "abcdefghijklmnopqrstuvwxyz0123456789", 
+        50
+    );
     
     _currentUser = findUserByName(name);
     if (_currentUser == nullptr) {
-        std::cout << "Usuario no encontrado.\n";
+        std::cout<<"Usuario no encontrado.\n";
         return;
     }
 
     // Validar contraseña (asumiendo que User tiene getPassword o checkPassword)
-    str pass = Console::inputStr("Contrasena: ", "abcdefghijklmnopqrstuvwxyz0123456789", 50);
+    str pass=Console::inputStr(
+        "Contrasena: ", 
+        "abcdefghijklmnopqrstuvwxyz0123456789", 
+        50
+    );
     // NOTA: Si tu User no tiene getPassword(), deberás agregarlo.
     if (_currentUser->getPassword() != pass) {
-        std::cout << "Contrasena incorrecta.\n";
+        std::cout<<"Contrasena incorrecta.\n";
         return;
     }
 
     // Funcionalidad II: Mostrar 3 fotos de amigos
     mostrarFotosPerfil();
-
     int option = 0;
-    while (option != 7) {
-        std::cout << "\n=== MENU PRINCIPAL ===\n";
+    while (option != 7){
+        std::cout << "\nMENU DE OPCIONES\n";
         std::cout << "1. Administrar amistades\n";
         std::cout << "2. Visitar perfil de un amigo\n";
         std::cout << "3. Ver sugerencias de amistad\n";
         std::cout << "4. Administrar mensajes\n";
         std::cout << "5. Actualizar fotos de amigos (Solo 1 vez)\n";
         std::cout << "7. Cerrar sesion\n";
-        
         option = Console::inputInt("Opcion: ", 1, 7);
-
         switch (option) {
             case 1: menuAmistades(); break;
             case 2: visitarPerfil(); break;
@@ -70,10 +107,10 @@ void Plataform::start() {
                     mostrarFotosPerfil();
                     _profilePicsUpdated = true;
                 } else {
-                    std::cout << "Ya actualizaste las fotos anteriormente.\n";
+                    std::cout<<"Ya actualizaste las fotos anteriormente.\n";
                 }
                 break;
-            case 7: std::cout << "Cerrando sesion...\n"; break;
+            case 7: std::cout<<"Cerrando sesion...\n"; break;
         }
     }
 }
@@ -85,46 +122,46 @@ void Plataform::mostrarFotosPerfil() {
     const List<str>& friends = _currentUser->getFriends().getFriends().getNameIDs();
     int numFriends = friends.getLen();
     
-    if (numFriends == 0) {
-        std::cout << "No tienes amigos para mostrar.\n";
+    if (numFriends==0){
+        std::cout<<"No tienes amigos para mostrar.\n";
         return;
     }
 
-    std::cout << "\n--- Fotos de perfil de tus amigos ---\n";
+    std::cout<<"\n--- Fotos de perfil de tus amigos ---\n";
     int mostrados = 0;
     
     // Algoritmo de selección aleatoria con peso basado en AMIGOS EN COMÚN
-    for (int i = 0; i < numFriends && mostrados < 3; i++) {
+    for (int i = 0; (i<numFriends) && (mostrados<3); i++) {
         User* amigo = findUserByName(friends[i]);
-        if (amigo) {
+        if (amigo){
             // 1. Calcular amigos en común reales
             int commonFriends = 0;
             List<str> amigoFriends = amigo->getFriends().getFriends().getNameIDs();
-            
-            amigoFriends.forEach([&](const str& f) {
-                if (_currentUser->getFriends().getFriends().contains(f)) {
-                    commonFriends++;
+            amigoFriends.forEach(
+                [&](const str& f) {
+                    if (_currentUser->getFriends().getFriends().contains(f)) {
+                        commonFriends++;
+                    }
                 }
-            });
+            );
 
             // 2. Asignar el peso según el PDF
             int weight = 1;
-            if (commonFriends > 20) weight = 4;      // 3.5x prioridad
-            else if (commonFriends > 10) weight = 3; // 2.5x prioridad
-
+            if (commonFriends>20) weight=4;      // 3.5x prioridad
+            else if (commonFriends>10) weight=3; // 2.5x prioridad
             // 3. Probabilidad de mostrarse (rand() % 5 da un máximo de 4)
-            if (rand() % 5 < weight) {
-                std::cout << amigo->getGallery().getProfilePicture().getFilePath() << "\n";
+            if (rand()%5< weight){
+                std::cout<< amigo->getGallery().getProfilePicture().getFilePath()<< "\n";
                 mostrados++;
             }
         }
     }
     
     // Si por azar no se mostraron 3, mostramos los que falten
-    while (mostrados < 3 && mostrados < numFriends) {
+    while (mostrados<3 && mostrados<numFriends) {
         User* amigo = findUserByName(friends[mostrados]);
         if (amigo) {
-            std::cout << amigo->getGallery().getProfilePicture().getFilePath() << "\n";
+            std::cout<<amigo->getGallery().getProfilePicture().getFilePath()<< "\n";
         }
         mostrados++;
     }
