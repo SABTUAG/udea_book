@@ -13,6 +13,7 @@ class str {
 public: 
     static const int NPOS= -1;
     static str fromInt(int number); 
+    static int toInt(const char* text); 
 
 private:
     char* _text;   

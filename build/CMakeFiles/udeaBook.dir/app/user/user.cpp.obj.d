@@ -162,9 +162,11 @@ CMakeFiles/udeaBook.dir/app/user/user.cpp.obj: \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/istream \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/date.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user\friends/FriendNetwork.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user\friends/list/FriendList.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \

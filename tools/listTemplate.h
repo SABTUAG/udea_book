@@ -146,6 +146,32 @@ public:
             current = current->next;
         }
     }
+
+    /**
+     * @brief Ordena la lista usando un comparador.
+     * @param compare Función que retorna true si el primer elemento debe ir antes que el segundo.
+     */
+    template <typename Compare>
+    void sort(Compare compare) {
+        if (_head == nullptr || _head->next == nullptr) return;
+
+        bool swapped = true;
+        while (swapped) {
+            swapped = false;
+            Node<Object>* current = _head;
+            
+            while (current->next != nullptr) {
+                // Si el actual debe ir DESPUÉS del siguiente, los intercambiamos
+                if (compare(current->next->value, current->value)) {
+                    Object temp = current->value;
+                    current->value = current->next->value;
+                    current->next->value = temp;
+                    swapped = true;
+                }
+                current = current->next;
+            }
+        }
+    }
 };
 
 #endif

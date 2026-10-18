@@ -1,23 +1,10 @@
 #include "FriendNetwork.h"
+#include "../tools/parser.h"
 
 FriendNetwork::FriendNetwork(): 
     _friends(), 
     _requests() {}
 
-
-str extractParens(const str& text, const str& key) {
-    int pos = text.find(key);
-    if (pos == str::NPOS) return "";
-    
-    // Recortamos el texto para buscar desde la palabra clave
-    str subText = text.substr(pos, text.len() - pos);
-    
-    int start = subText.find('(');
-    int end = subText.find(')');
-    
-    if (start == str::NPOS || end == str::NPOS) return "";
-    return subText.substr(start + 1, end - start - 1);
-}
 
 FriendNetwork::FriendNetwork(const str& block) {
     // 1. Parsear Amigos: FRIENDS: (carlos_m;ana_p);

@@ -32,6 +32,7 @@ public:
 
     const List<str>& getNameIDs() const;
     List<str>& getNameIDs();
+    //const int getLen(); 
 
     bool contains(const str& nameID) const;
     bool add(const str& nameID);

@@ -10,6 +10,28 @@ Album::Album(
     _privacy(privacy), 
     _images() {}
 
+// Constructor que parsea: "Nombre|Privacidad|Ruta|Foto1~Fecha~Size~Likes;Foto2..."
+Album::Album(const str& block) {
+    List<str> partes = block.split('|');
+    if (partes.getLen() >= 4) {
+        _name = partes[0].strip();
+        _privacy = partes[1].strip();
+        _filePath = partes[2].strip();
+        
+        // Parsear las imágenes
+        List<str> imagenesStr = partes[3].split(';');
+        imagenesStr.forEach([&](const str& imgStr) {
+            List<str> f = imgStr.split('~');
+if (f.getLen() == 4) {
+    int size = str::toInt(f[2].c_str());
+    int likes = str::toInt(f[3].c_str());
+    
+    Image img(f[0].strip(), f[1].strip(), size, likes);
+    _images.add(img);
+}
+        });
+    }
+}  
 
 const str& Album::getName() const {
     return _name;

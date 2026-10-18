@@ -161,4 +161,5 @@ CMakeFiles/udeaBook.dir/app/user/images/image.cpp.obj: \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/ostream.tcc \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/istream \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc \
- C:/SoftwareCoding/Projects/udeaBook/tools/str.h
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h

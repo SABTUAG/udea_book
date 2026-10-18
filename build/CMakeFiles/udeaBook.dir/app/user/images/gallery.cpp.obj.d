@@ -163,5 +163,8 @@ CMakeFiles/udeaBook.dir/app/user/images/gallery.cpp.obj: \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc \
  C:\SoftwareCoding\Projects\udeaBook\app\user\images\image.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user\images\album.h \
- C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/parser.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h

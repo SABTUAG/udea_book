@@ -162,6 +162,33 @@ CMakeFiles/udeaBook.dir/main.cpp.obj: \
  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc \
  C:\SoftwareCoding\Projects\udeaBook\tools/listTemplate.h \
  C:\SoftwareCoding\Projects\udeaBook\tools/str.h \
+ C:\SoftwareCoding\Projects\udeaBook\tools/listTemplate.h \
  C:\SoftwareCoding\Projects\udeaBook\databases/fileManager.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
- C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/plataform.h \
+ C:/SoftwareCoding/Projects/udeaBook/databases/fileManager.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/console.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/date.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/efficiency.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/friends/FriendNetwork.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/friends/list/FriendList.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/friends/requests/FriendRequestHandler.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/friends/requests/FriendRequest.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/images/gallery.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/images/image.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/images/album.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/messages/MessageHandling.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/messages/message.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/user.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/date.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/friends/FriendNetwork.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/images/Gallery.h \
+ C:\SoftwareCoding\Projects\udeaBook\app/user/messages/MessageHandling.h

@@ -172,8 +172,10 @@ CMakeFiles/udeaBook.dir/app/plataform.cpp.obj: \
  C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/FriendNetwork.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/list/FriendList.h \
  C:/SoftwareCoding/Projects/udeaBook/tools/str.h \
+ C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/requests/FriendRequestHandler.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/friends/requests/FriendRequest.h \
  C:\SoftwareCoding\Projects\udeaBook\app\user/images/gallery.h \

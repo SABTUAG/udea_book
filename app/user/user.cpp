@@ -113,6 +113,9 @@ const str& User::getBirthDate() const {
 const str& User::getEmail() const {
     return _email;
 }
+const str& User::getPassword() const {
+    return _password; 
+}
 const str& User::getCity() const {
     return _city;
 }

@@ -9,32 +9,31 @@
 #include "../tools/listTemplate.h"
 #include "../tools/str.h"
 #include "user/friends/FriendNetwork.h"
+#include "user/friends/suggestions/suggestions.h"
 #include "user/images/gallery.h"
 #include "user/messages/MessageHandling.h"
 #include "user/user.h"
 
-/**
- * @brief Representa la plataforma donde interactuan los usuarios.
- */
 class Plataform {
-
 private:
     List<User> _users; 
-    
-    /**
-     * @brief Carga los usuarios desde el archivo.
-     * @param database Ruta del archivo .txt
-     */
+    User* _currentUser;
+    bool _profilePicsUpdated; // Para permitir actualizar fotos solo 1 vez
+
     void loadUsers(const str& database); 
+    
+    // Funcionalidades internas
+    void menuAmistades();
+    void menuMensajes();
+    void menuSugerencias();
+    void visitarPerfil();
+    void mostrarFotosPerfil();
+    void carruselFotos(Album& album);
 
 public:
     Plataform(const str& databasePath); 
     
-    /**
-     * @brief Busca un usuario por su nombre.
-     * @param nameID Nombre del usuario a buscar.
-     * @return Puntero al usuario, o nullptr si no existe.
-     */
+    void start(); // El bucle principal
     User* findUserByName(const str& nameID); 
 };
 

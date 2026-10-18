@@ -15,6 +15,7 @@ List<str>& FriendList::getNameIDs(){
 }
 
 
+
 bool FriendList::contains(const str& nameID) const {
     return _friends.search(nameID);
 }

@@ -56,6 +56,7 @@ public:
     const str& getNameID() const;
     const str& getBirthDate() const;
     const str& getEmail() const;
+    const str& getPassword() const; 
     const str& getCity() const;
     const str& getCountry() const;
     const str& getRegistrationDate() const;

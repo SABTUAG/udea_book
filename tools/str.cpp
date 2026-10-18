@@ -23,6 +23,32 @@ str str::fromInt(int number) {
     }
     return str(&buffer[i]); // Creamos el str desde la posición donde empezó
 }
+int str::toInt(const char* text) {
+    if (text == nullptr) return 0;
+    
+    int result = 0;
+    int sign = 1;
+    int i = 0;
+    
+    // Saltar espacios iniciales si los hay
+    while (text[i] == ' ' || text[i] == '\t') i++;
+    
+    // Verificar si es negativo
+    if (text[i] == '-') {
+        sign = -1;
+        i++;
+    } else if (text[i] == '+') {
+        i++;
+    }
+    
+    // Recorrer los dígitos
+    while (text[i] >= '0' && text[i] <= '9') {
+        result = result * 10 + (text[i] - '0');
+        i++;
+    }
+    
+    return result * sign;
+}
 
 int str::len(const char* text){
     int i=0;

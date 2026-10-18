@@ -24,6 +24,7 @@ public:
         const str& filepath, 
         const str& privacy
     );
+    Album(const str& block); 
 
     const str& getName() const;
     const str& getFilePath() const;
