@@ -1,27 +1,18 @@
 #include "FriendRequest.h"
 
-FriendRequest::FriendRequest(
-    const str& sender, const str& receiver
-): 
-    _sender(sender), 
-    _receiver(receiver) {}
+FriendRequest::FriendRequest(const str& nameID): 
+    _sender(nameID){}
 
 
 const str& FriendRequest::getSender() const {
     return _sender;
-}
-const str& FriendRequest::getReceiver() const {
-    return _receiver; 
 }
 
 
 bool FriendRequest::operator==(
     const FriendRequest& anotherRequest
 ) const {
-    return (
-        (_sender == anotherRequest._sender) &&
-        (_receiver == anotherRequest._receiver)
-    );
+    return _sender == anotherRequest._sender;
 }
 bool FriendRequest::operator!=(
     const FriendRequest& anotherRequest

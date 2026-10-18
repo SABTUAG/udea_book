@@ -7,9 +7,21 @@
 
 /**
  * @brief Gestiona la red de amigos del usuario: amigos y solicitudes.
- * @details Agrupa dos subsistemas: la lista de amigos confirmados y las
- *          solicitudes de amistad recibidas. Se deja espacio para
- *          incorporar un motor de sugerencias en el futuro.
+ * 
+ * Actúa como una fachada que centraliza la actividad 
+ * social del usuario. Agrupa dos subsistemas: la lista de 
+ * amigos confirmados y las solicitudes de amistad recibidas. 
+ * 
+ * Los subsistemas se almacenan por composición. Esto 
+ * significa que si el usuario es destruido, su red de 
+ * amigos también lo será, liberando la memoria asociada 
+ * de forma automática.
+ * 
+ * Delegar esta responsabilidad en FriendNetwork permite que 
+ * la clase User se mantenga enfocada únicamente en los datos 
+ * personales. Actualmente agrupa amigos y solicitudes, pero 
+ * se deja el espacio preparado para incorporar un motor de 
+ * sugerencias de amistad en el futuro sin afectar al resto.
  */
 class FriendNetwork {
 

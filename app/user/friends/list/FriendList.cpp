@@ -34,7 +34,7 @@ std::ostream& operator<<(
     output<<"- Amigos -\n"; 
     friendlist._friends.forEach(
         [&](const str& nameID){
-            output << n++ << ")" << nameID << "\n"; 
+            output<<n++<<") "<<nameID<<"\n"; 
         }
     ); 
     return output; 

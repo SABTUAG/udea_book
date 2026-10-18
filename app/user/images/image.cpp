@@ -1,5 +1,9 @@
 #include "image.h"
-Image::Image() : _publicationDate(""), _size(0), _filePath(""), _likes(0) {}
+
+Image::Image(): 
+    _publicationDate(""), 
+    _size(0), _filePath(""), 
+    _likes(0) {}
 Image::Image(
     const str& filePath, 
     const str& publicationDate,
@@ -43,6 +47,7 @@ bool Image::operator!=(const Image& otherImg) const {
 bool Image::operator<(const Image& otherImg) const {
     return _publicationDate < otherImg._publicationDate;
 }
+
 
 std::ostream& operator<<(
     std::ostream& output, 

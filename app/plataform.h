@@ -19,11 +19,13 @@
 class Plataform {
 
 private:
-    //List<User*> _users;
-    List<str> _usersInfo; 
+    List<User> _users; 
+    void loadUsers(const str& database); 
 
 public:
-    Plataform(const str& database); 
+    Plataform(const str& databasePath); 
+    
+    User* findUserByName(const str& nameID); 
 };
 
 #endif

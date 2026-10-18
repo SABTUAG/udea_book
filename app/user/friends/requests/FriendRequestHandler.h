@@ -7,6 +7,20 @@
 
 /**
  * @brief Gestiona las solicitudes de amistad recibidas.
+ * 
+ * Almacena y administra las solicitudes de amistad 
+ * que otros usuarios le han enviado a este usuario. Actúa 
+ * como una "bandeja de entrada" de invitaciones pendientes.
+ * 
+ * Utiliza una List<FriendRequest> para mantener el orden de 
+ * llegada. Las solicitudes permanecen aquí hasta que el 
+ * usuario decida aceptarlas (momento en el que se mueven a 
+ * la FriendList) o rechazarlas (momento en el que se 
+ * eliminan de esta lista).
+ * 
+ * Al igual que la lista de amigos, es un subsistema de 
+ * FriendNetwork y se apoya en el nameID para identificar 
+ * a los emisores, evitando acoplamientos por punteros.
  */
 class FriendRequests {
 
@@ -23,12 +37,12 @@ public:
     int getCount() const;
 
     bool hasReceivedAny() const;
-    bool hasReceivedFrom(const str& sender) const;
+    bool hasReceivedFrom(const str& nameID) const;
     // Revisar despues
-    const FriendRequest& getAt(int index) const;
+    const FriendRequest& getAt(int requestIndex) const;
 
-    bool addReceived(const FriendRequest& request);
-    bool removeReceived(const str& sender);
+    bool add(const FriendRequest& request);
+    bool remove(const str& nameID);
 
     friend std::ostream& operator<<(
         std::ostream& output, 
@@ -41,4 +55,4 @@ std::ostream& operator<<(
     const FriendRequests& requests
 );
 
-#endif
+#endif 
