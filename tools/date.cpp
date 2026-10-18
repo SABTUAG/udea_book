@@ -1,6 +1,9 @@
 #include "date.h"
 #include <ctime>
 
+Date::Date(int year, int month, int day) 
+    : _year(year), _month(month), _day(day) {}
+
 Date Date::today(){
     std::time_t k = std::time(nullptr);
     std::tm* now = std::localtime(&k);

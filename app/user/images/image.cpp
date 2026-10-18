@@ -1,5 +1,5 @@
 #include "image.h"
-
+Image::Image() : _publicationDate(""), _size(0), _filePath(""), _likes(0) {}
 Image::Image(
     const str& filePath, 
     const str& publicationDate,

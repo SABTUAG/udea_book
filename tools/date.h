@@ -7,7 +7,7 @@ class Date {
 
 private:
     int _year; 
-    int _months; 
+    int _month; 
     int _day;
     str _current; 
 

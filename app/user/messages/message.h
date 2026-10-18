@@ -10,8 +10,8 @@
 class Message {
 
 private:
-    int _senderID;
-    int _receiverID;
+    str _sender;
+    str _receiver;
     str _message;
     str _shippingDate;
     bool _read;
@@ -19,15 +19,15 @@ private:
 public:
     Message();
     Message(
-        int senderID,
-        int receiverID,
+        const str& senderID,
+        const str& receiverID,
         const str& message,
         const str& shippingDate,
         bool read
     );
 
-    int getSenderID() const;
-    int getReceiverID() const;
+    const str& getSender() const;
+    const str& getReceiver() const;
     const str& getMessage() const;
     const str& getShippingDate() const;
     bool getRead() const;
@@ -40,13 +40,13 @@ public:
 
     friend std::ostream& operator<<(
         std::ostream& output, 
-        const Message& msgN
+        const Message& msg
     );
 };
 
 std::ostream& operator<<(
     std::ostream& output, 
-    const Message& msgN
+    const Message& msg
 );
 
 #endif
