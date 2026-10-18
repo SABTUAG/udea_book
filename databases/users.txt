@@ -1,0 +1,22 @@
+{
+ID:1;
+NAMEID:juanito76;
+BIRTHDATE:2005-04-01;
+EMAIL:juan@udea.edu.co;
+PASSWORD:pass123;
+CITY:Medellin;
+COUNTRY:Colombia;
+REGISTRATIONDATE:2026-01-01;
+FRIENDNETWORK[
+  FRIENDS: (carlos_m;ana_p);
+  REQUESTS: (pedro_12)
+]
+MESSAGESHANDLING[
+  SENT: (carlos_m|Hola Carlos|2026-10-15; ana_p|Que mas|2026-10-16);
+  RECEIVER: (carlos_m|Todo bien|2026-10-15)
+]
+GALLERY[
+  ALBUMS: (Vacaciones|publico|foto1.png|foto2.png; Familia|privado);
+  IMAGEPROFILE: (juanito76/albums/profile.png)
+]
+}

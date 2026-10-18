@@ -1,0 +1,110 @@
+[
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\plataform.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\plataform.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/plataform.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/plataform.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\friends\\FriendNetwork.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\friends\\FriendNetwork.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/friends/FriendNetwork.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/friends/FriendNetwork.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\friends\\list\\FriendList.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\friends\\list\\FriendList.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/friends/list/FriendList.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/friends/list/FriendList.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\friends\\requests\\FriendRequest.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\friends\\requests\\FriendRequest.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequest.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/friends/requests/FriendRequest.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\friends\\requests\\FriendRequestHandler.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\friends\\requests\\FriendRequestHandler.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequestHandler.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/friends/requests/FriendRequestHandler.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\friends\\suggestions\\suggestions.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\friends\\suggestions\\suggestions.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/friends/suggestions/suggestions.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/friends/suggestions/suggestions.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\images\\album.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\images\\album.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/images/album.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/images/album.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\images\\gallery.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\images\\gallery.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/images/gallery.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/images/gallery.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\images\\image.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\images\\image.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/images/image.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/images/image.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\messages\\MessageHandling.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\messages\\MessageHandling.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/messages/MessageHandling.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/messages/MessageHandling.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\messages\\message.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\messages\\message.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/messages/message.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/messages/message.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\app\\user\\user.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\app\\user\\user.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/app/user/user.cpp",
+  "output": "CMakeFiles/udeaBook.dir/app/user/user.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\databases\\fileManager.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\databases\\fileManager.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/databases/fileManager.cpp",
+  "output": "CMakeFiles/udeaBook.dir/databases/fileManager.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\main.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\main.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/main.cpp",
+  "output": "CMakeFiles/udeaBook.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\tools\\console.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\tools\\console.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/tools/console.cpp",
+  "output": "CMakeFiles/udeaBook.dir/tools/console.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\tools\\date.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\tools\\date.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/tools/date.cpp",
+  "output": "CMakeFiles/udeaBook.dir/tools/date.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\tools\\efficiency.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\tools\\efficiency.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/tools/efficiency.cpp",
+  "output": "CMakeFiles/udeaBook.dir/tools/efficiency.cpp.obj"
+},
+{
+  "directory": "C:/SoftwareCoding/Projects/udeaBook/build",
+  "command": "C:\\SoftwareCoding\\IDEs\\Compilers\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles\\udeaBook.dir\\includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\udeaBook.dir\\tools\\str.cpp.obj -c C:\\SoftwareCoding\\Projects\\udeaBook\\tools\\str.cpp",
+  "file": "C:/SoftwareCoding/Projects/udeaBook/tools/str.cpp",
+  "output": "CMakeFiles/udeaBook.dir/tools/str.cpp.obj"
+}
+]

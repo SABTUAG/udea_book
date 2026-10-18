@@ -1,0 +1,3 @@
+C:\SoftwareCoding\IDEs\Compilers\msys64\ucrt64\bin\cmake.exe -E rm -f CMakeFiles\udeaBook.dir/objects.a
+C:\SoftwareCoding\IDEs\Compilers\msys64\ucrt64\bin\ar.exe qc CMakeFiles\udeaBook.dir/objects.a @CMakeFiles\udeaBook.dir\objects1.rsp
+C:\SoftwareCoding\IDEs\Compilers\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\udeaBook.dir/objects.a -Wl,--no-whole-archive -o udeaBook.exe -Wl,--out-implib,libudeaBook.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\udeaBook.dir\linkLibs.rsp

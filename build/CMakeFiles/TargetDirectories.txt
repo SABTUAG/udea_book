@@ -1,0 +1,3 @@
+C:/SoftwareCoding/Projects/udeaBook/build/CMakeFiles/udeaBook.dir
+C:/SoftwareCoding/Projects/udeaBook/build/CMakeFiles/edit_cache.dir
+C:/SoftwareCoding/Projects/udeaBook/build/CMakeFiles/rebuild_cache.dir
