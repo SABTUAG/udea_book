@@ -2,13 +2,17 @@
 #define STR_H
 
 #include <iostream>
-#include <listTemplate.h>
+#include "listTemplate.h"
 
 /**
  * @brief Cadena de caracteres (string propia).
  * @warning No soporta caracteres multibyte (UTF-8).Se asume ASCII.
  */
 class str {
+
+public: 
+    static const int NPOS= -1;
+    static str fromInt(int number); 
 
 private:
     char* _text;   
@@ -18,8 +22,6 @@ private:
     static char* copy(const char* text);
 
 public:
-    static const int NPOS= -1;
-
     str();
     str(const char* text);
     str(const str& other);
@@ -45,9 +47,10 @@ public:
 
     int find(const str& substr) const;
     int find(char c) const;
-    str substr(int start, int lenght) const; 
+    str substr(int start, int length) const; 
     List<str> split(char delimiter) const; 
     str strip() const; 
+
 
     friend std::ostream& operator<<(
         std::ostream& output, 

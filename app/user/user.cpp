@@ -1,29 +1,27 @@
 #include "User.h"
 
-str extractValue(
-    const str& block, 
-    const str& key)
-{
-    int pos=block.find(key);
+str extractValue(const str& block, const str& key) {
+    int pos = block.find(key);
     if (pos == str::NPOS) return "";
+
     int start = pos + key.len();
     int end = start;
     
-    // Avanzamos hasta encontrar un ';', un salto de línea o un corchete
+    // 1. Buscar el final del valor
     while (
         (end < block.len()) && 
         (block[end] != ';') && 
         (block[end] != '\n') && 
         (block[end] != '[')
-    ) end++;
-    
-    str result = "";
-    for (int i=start; i<end; i++){
-        if (block[i]!='\r' && block[i]!=' '){
-            result+=block[i];
-        }
+    ) {
+        end++;
     }
-    return result;
+    
+    // 2. Extraer la subcadena de un solo golpe usando substr (Mucho más rápido)
+    str rawValue = block.substr(start, end - start);
+    
+    // 3. Limpiar espacios en blanco y '\r' de los extremos usando strip()
+    return rawValue.strip();
 }
 
 
@@ -53,6 +51,7 @@ User::User(
     const str& country,
     const str& registrationDate
 ): 
+    _nameID(nameID),
     _birthDate(birthDate), 
     _email(email),
     _password(password), 

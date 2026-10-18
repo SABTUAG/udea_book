@@ -16,7 +16,10 @@ private:
 
 public:
     MessageHandling();
-    MessageHandling(int ownerID, const str& content);
+    MessageHandling(
+        const str& ownerNameID, 
+        const str& content
+    );
 
     const List<Message>& getSent() const;
     List<Message>& getSent();

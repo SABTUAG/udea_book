@@ -1,5 +1,29 @@
 #include "str.h"
 
+str str::fromInt(int number) {
+    if (number == 0) return str("0");
+    char buffer[20]; // Suficiente para un int de 32 bits
+    int i = 19;
+    buffer[i] = '\0';
+    bool isNegative = false;
+    if (number < 0) {
+        isNegative = true;
+        number = -number; // Lo hacemos positivo para sacar los dígitos
+    }
+    // Extraemos los dígitos de atrás hacia adelante
+    while (number > 0) {
+        i--;
+        buffer[i] = (number % 10) + '0'; // Convertimos el dígito a char
+        number /= 10;
+    }
+    // Si era negativo, agregamos el signo
+    if (isNegative) {
+        i--;
+        buffer[i] = '-';
+    }
+    return str(&buffer[i]); // Creamos el str desde la posición donde empezó
+}
+
 int str::len(const char* text){
     int i=0;
     while (text[i] != '\0') i++;
@@ -175,8 +199,8 @@ List<str> str::split(char delimiter) const {
     return result;
 }
 str str::strip() const {
-    unsigned int start=0; 
-    unsigned int end= _len - 1;  
+    int start=0; 
+    int end= _len - 1;  
     while (
         (start<_len) &&
         (

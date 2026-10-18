@@ -28,7 +28,6 @@ public:
 
     /**
      * @brief Solicita una cadena. 
-     * @bug Sin soporte, NO usar. 
      */
     static str inputStr(
         const char* prompt, 

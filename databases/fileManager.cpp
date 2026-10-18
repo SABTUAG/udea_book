@@ -22,10 +22,7 @@ bool FileManager::read(
             }
         } 
         else if (insideBlock){
-            char temp[2];
-            temp[0] =letter;
-            temp[1] ='\0';
-            buffer += str(temp);
+            buffer+= letter;
         }
     }
     file.close();

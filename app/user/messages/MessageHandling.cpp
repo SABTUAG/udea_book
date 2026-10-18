@@ -3,46 +3,39 @@
 MessageHandling::MessageHandling(): 
     _sent(), 
     _received() {}
-
-/* Revisar constructor 
 MessageHandling::MessageHandling(
-    int ownerID, 
+    const str& ownerNameID, 
     const str& content
 ): 
     _sent(), 
     _received() 
 {
-    // Dividir el contenido por líneas ('\n') y procesar cada una
-    int start = 0;
-    for (int i = 0; i <= content.len(); i++) {
-        if (i == content.len() || content[i] == '\n') {
-            // Extraer línea actual
-            str linea;
-            for (int j = start; j < i; j++) {
-                linea += str(content[j]);
-            }
-            start = i + 1;
+    List<str> lineas = content.split('\n');
+    lineas.forEach([&](const str& lineaOriginal) {
+        str linea = lineaOriginal.strip(); // Quita \r y espacios
+        if (linea.len() == 0) return;
 
-            if (linea.len() == 0) continue;   // línea vacía
+        // Formato esperado: sender|receiver|texto|fecha|read
+        List<str> campos = linea.split('|');
+        
+        if (campos.getLen() >= 5) {
+            str sender = campos[0].strip();
+            str receiver = campos[1].strip();
+            str texto = campos[2].strip();
+            str fecha = campos[3].strip();
+            bool read = (campos[4].strip() == "1" || campos[4].strip() == "true");
 
-            // Parsear campos: senderID;receiverID;texto;date;read
-            int senderID = extraerCampoInt(linea, 0);
-            int receiverID = extraerCampoInt(linea, 1);
-            str texto = extraerCampoStr(linea, 2);
-            str date = extraerCampoStr(linea, 3);
-            bool read = (extraerCampoStr(linea, 4) == "1");
+            Message msg(sender, receiver, texto, fecha, read);
 
-            Message msg(senderID, receiverID, texto, date, read);
-
-            if (senderID == ownerID) {
+            // Si el dueño es el emisor, va a enviados. Si es el receptor, a recibidos.
+            if (sender == ownerNameID) {
                 _sent.add(msg);
-            } else if (receiverID == ownerID) {
+            } else if (receiver == ownerNameID) {
                 _received.add(msg);
             }
         }
-    }
+    });
 }
-*/
 
 
 const List<Message>& MessageHandling::getSent() const {
@@ -68,9 +61,9 @@ bool MessageHandling::addReceived(const Message& msg){
 int MessageHandling::markAllReceivedAsRead(){
     int marked = 0;
     _received.forEach(
-        [&](Message& msgN){
-            if (!msgN.getRead()){
-                msgN.setRead(true);
+        [&](Message& msg){
+            if (!msg.getRead()){
+                msg.setRead(true);
                 marked++;
             }
         }

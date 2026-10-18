@@ -20,11 +20,21 @@ class Plataform {
 
 private:
     List<User> _users; 
+    
+    /**
+     * @brief Carga los usuarios desde el archivo.
+     * @param database Ruta del archivo .txt
+     */
     void loadUsers(const str& database); 
 
 public:
     Plataform(const str& databasePath); 
     
+    /**
+     * @brief Busca un usuario por su nombre.
+     * @param nameID Nombre del usuario a buscar.
+     * @return Puntero al usuario, o nullptr si no existe.
+     */
     User* findUserByName(const str& nameID); 
 };
 

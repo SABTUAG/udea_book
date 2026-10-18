@@ -2,18 +2,11 @@
 #include "tools/listTemplate.h"
 #include "tools/str.h"
 #include "databases/fileManager.h"
+#include "app/plataform.h"
 
 int main(){
-    str database = "databases/users.txt"; 
-    List<str> info; 
-    FileManager::read(database, info); 
-    int n = info.getLen(); 
-
-    for(int k=0; k<n; k++){
-        std::cout<<info[k]<<std::endl; 
-    }
-
-    
+    const str database = "databases/users.txt"; 
+    Plataform udeabook(database); 
 
     return 0; 
 }

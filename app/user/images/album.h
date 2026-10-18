@@ -18,6 +18,7 @@ private:
     List<Image> _images;    
 
 public:
+    Album(); 
     Album(
         const str& name, 
         const str& filepath, 

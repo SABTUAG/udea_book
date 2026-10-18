@@ -5,18 +5,8 @@
 
 class Date {
 
-private:
-    int _year; 
-    int _month; 
-    int _day;
-    str _current; 
-
 public:
-    Date(); 
-    Date(int year, int month, int day); 
-    Date(const str& formatIso);
-    
-    static Date today(); 
+    static str today();
 };
 
 #endif
