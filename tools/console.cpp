@@ -12,7 +12,7 @@ char Console::inputChar(
     const char* prompt, 
     const str& validChars
 ){  
-    unsigned int lenValidChars = validChars.len(); 
+    unsigned int lenValidChars=validChars.len(); 
     char character;
     bool valid = false;
     while (!valid) {

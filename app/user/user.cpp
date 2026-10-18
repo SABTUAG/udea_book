@@ -121,7 +121,7 @@ bool User::operator!=(const User& otherUser) const {
     return !(*this == otherUser);
 }
 bool User::operator<(const User& otherUser) const {
-    return _id < otherUser._id;
+    return _registrationDate < otherUser._registrationDate;
 }
 
 
