@@ -5,33 +5,53 @@
 MessageHandling::MessageHandling(): 
     _sent(), 
     _received() {}
-MessageHandling::MessageHandling(const str& ownerNameID, const str& block) {
-    // 1. Mensajes Enviados: SENT: (carlos|Hola|2026-10-15);
-    str sentStr = extractParens(block, "SENT:");
-    if (sentStr.len() > 0) {
-        List<str> msgs = sentStr.split(';');
-        msgs.forEach([&](const str& m) {
-            List<str> f = m.split('|');
-            if (f.getLen() >= 3) {
-                // Emisor soy yo, receptor es f[0]
-                _sent.add(Message(ownerNameID, f[0].strip(), f[1].strip(), f[2].strip(), true));
-            }
-        });
-    }
 
-    // 2. Mensajes Recibidos: RECEIVER: (carlos|Todo bien|2026-10-15)
+MessageHandling::MessageHandling(
+    const str& ownerNameID, 
+    const str& block
+){
+    str sentStr = extractParens(block, "SENT:");
+    if (sentStr.len() > 0){
+        List<str> msgs = sentStr.split(';');
+        msgs.forEach(
+            [&](const str& msg){
+                List<str> msgAtributes = msg.split('|');
+                if (msgAtributes.getLen()>= 3){
+                    _sent.add(
+                        Message(
+                            ownerNameID, 
+                            msgAtributes[0].strip(), 
+                            msgAtributes[1].strip(), 
+                            msgAtributes[2].strip(), 
+                            true
+                        )
+                    );
+                }
+            }
+        );
+    }
     str recvStr = extractParens(block, "RECEIVER:");
     if (recvStr.len() > 0) {
         List<str> msgs = recvStr.split(';');
-        msgs.forEach([&](const str& m) {
-            List<str> f = m.split('|');
-            if (f.getLen() >= 3) {
-                // Emisor es f[0], receptor soy yo
-                _received.add(Message(f[0].strip(), ownerNameID, f[1].strip(), f[2].strip(), false));
+        msgs.forEach(
+            [&](const str& msg) {
+                List<str> msgAtributes = msg.split('|');
+                if (msgAtributes.getLen() >= 3){
+                    _received.add(
+                        Message(
+                            msgAtributes[0].strip(), 
+                            ownerNameID, 
+                            msgAtributes[1].strip(), 
+                            msgAtributes[2].strip(), 
+                            false
+                        )
+                    );
+                }
             }
-        });
+        );
     }
 }
+
 
 const List<Message>& MessageHandling::getSent() const {
     return _sent;

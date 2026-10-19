@@ -11,28 +11,33 @@ Album::Album(
     _privacy(privacy), 
     _images() {}
 
-// Constructor que parsea: "Nombre|Privacidad|Ruta|Foto1~Fecha~Size~Likes;Foto2..."
+// "Nombre|Privacidad|Ruta|Foto1~Fecha~Size~Likes;Foto2..."
 Album::Album(const str& block) {
-    List<str> partes = block.split('|');
-    if (partes.getLen() >= 4) {
-        _name = partes[0].strip();
-        _privacy = partes[1].strip();
-        _filePath = partes[2].strip();
-        
-        // Parsear las imágenes
-        List<str> imagenesStr = partes[3].split(';');
-        imagenesStr.forEach([&](const str& imgStr) {
-            List<str> f = imgStr.split('~');
-if (f.getLen() == 4) {
-    int size = str::toInt(f[2].c_str());
-    int likes = str::toInt(f[3].c_str());
-    
-    Image img(f[0].strip(), f[1].strip(), size, likes);
-    _images.add(img);
-}
-        });
+    List<str> parts = block.split('|');
+    if (parts.getLen() >= 4){
+        _name = parts[0].strip();
+        _privacy = parts[1].strip();
+        _filePath = parts[2].strip();
+        List<str> imagenesStr = parts[3].split(';');
+        imagenesStr.forEach(
+            [&](const str& imgStr){
+                List<str> imageAtributes = imgStr.split('~');
+                if (imageAtributes.getLen() == 4){
+                    int size = str::toInt(imageAtributes[2].c_str());
+                    int likes = str::toInt(imageAtributes[3].c_str());
+                    Image img(
+                        imageAtributes[0].strip(), 
+                        imageAtributes[1].strip(), 
+                        size,
+                        likes
+                    );
+                    _images.add(img);
+                }
+            }
+        );
     }
 }  
+
 
 const str& Album::getName() const {
     return _name;
@@ -65,39 +70,31 @@ bool Album::addImage(const Image& image){
 bool Album::removeImage(const Image& image){
     return _images.remove(image);
 }
+// Para refactorizar
 void Album::carrusel() {
-    if (_images.getLen() == 0){
+    if (_images.getLen()==0){
         std::cout<<"El album "<<getName()<<" esta vacio.\n";
         return;
     }
-    int currentPhotoIndex  = 0;
-    bool running = true;
-    while (running) {
+    int currentPhotoIndex=0;
+    bool running=true;
+    while (running){
         Image& img = _images[currentPhotoIndex];
-        std::cout << "\n--- Foto " << currentPhotoIndex  + 1 << " de " << _images.getLen() << " ---\n";
-        std::cout << "Ruta:  " << img.getFilePath() << "\n";
-        std::cout << "Fecha: " << img.getPublicationDate() << "\n";
-        std::cout << "Likes: " << img.getLikes() << "\n";
-        
-        // Usamos tu inputChar (Mucho más limpio que inputStr)
+        std::cout<<"\n Foto "<<currentPhotoIndex+1<<": "<<img<<"\n";
+        std::cout<<"[ Fecha: "<<img.getPublicationDate()<<" ] [Likes: "<<img.getLikes()<<" ]\n";
         char c = Console::inputChar(
-            "\n[s]iguiente, [a]nterior, [l]ike, [q]uit: ", 
-            "sSalLqQ"
+            "\ns = siguiente, a = anterior, l = dar like, i = quitar like, q = salir: ", 
+            "saliq"
         );
-        
-        if (c=='s'||c=='S') {
-            currentPhotoIndex  = (currentPhotoIndex  + 1) % _images.getLen();
+        if (c=='s'){
+            currentPhotoIndex=(currentPhotoIndex  + 1)%_images.getLen();
         } 
-        else if (c == 'a' || c == 'A') {
-            currentPhotoIndex  = (currentPhotoIndex  - 1 + _images.getLen()) % _images.getLen();
+        else if (c=='a'){
+            currentPhotoIndex=(currentPhotoIndex-1+_images.getLen())%_images.getLen();
         } 
-        else if (c == 'l' || c == 'L') {
-            img.addLike();
-            std::cout << "-> Te gusta esta foto! (Likes actuales: " << img.getLikes() << ")\n";
-        } 
-        else if (c == 'q' || c == 'Q') {
-            running = false;
-        }
+        else if (c=='i') img.removeLike(); 
+        else if (c=='l') img.addLike();
+        else if (c=='q') running = false;
     }
 }
 

@@ -35,7 +35,6 @@ bool FriendRequests::hasReceivedFrom(
 const FriendRequest& FriendRequests::getAt(int requestIndex) const {
     return _received[requestIndex];
 }
-// revisar estos
 bool FriendRequests::add(const FriendRequest& request){
     return _received.add(request);
 }

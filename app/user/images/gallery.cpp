@@ -5,35 +5,35 @@ Gallery::Gallery():
     _profilePicture(), 
     _albums() {}
 
-
 Gallery::Gallery(
     const Image& profilePicture, 
     const List<Album>& albums
 ): 
     _profilePicture(profilePicture), 
     _albums(albums) {}
-Gallery::Gallery(const str& block) {
-    // 1. Parsear Álbumes
-    str albumsStr = extractParens(block, "ALBUMS:");
-    if (albumsStr.len() > 0) {
-        List<str> albs = albumsStr.split(';');
-        albs.forEach([&](const str& a) {
-            // Pasamos el bloque de texto al nuevo constructor de Album
-            _albums.add(Album(a)); 
-        });
-    }
 
-    // 2. Parsear Foto de Perfil (también tiene fecha, tamaño, likes)
+Gallery::Gallery(const str& block){
+    str albumsStr = extractParens(block, "ALBUMS:");
+    if (albumsStr.len() > 0){
+        List<str> albs = albumsStr.split(';');
+        albs.forEach(
+            [&](const str& album){
+                _albums.add(Album(album)); 
+            }
+        );
+    }
     str profileStr = extractParens(block, "IMAGEPROFILE:");
     if (profileStr.len() > 0) {
-        List<str> f = profileStr.split('~');
-        if (f.getLen() == 4) {
-    // Correcto: toInt retorna el entero y se lo asignas a la variable
-    int size = str::toInt(f[2].c_str());
-    int likes = str::toInt(f[3].c_str());
-    
-    _profilePicture = Image(f[0].strip(), f[1].strip(), size, likes);
-}
+        List<str> profileAtributes = profileStr.split('~');
+        if (profileAtributes.getLen() == 4) {
+            int size = str::toInt(profileAtributes[2].c_str());
+            int likes = str::toInt(profileAtributes[3].c_str());
+            _profilePicture = Image(
+                profileAtributes[0].strip(), 
+                profileAtributes[1].strip(), 
+                size, likes
+            );
+        }
     }
 }
 

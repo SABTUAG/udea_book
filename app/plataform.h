@@ -49,11 +49,6 @@ private:
     
     //friendship management menu
     void FriendShipManagementMenu();
-    void menuMensajes();
-    void menuSugerencias();
-    void visitarPerfil();
-    void mostrarFotosPerfil();
-    void carruselFotos(Album& album);
 
 public:
     Plataform(const str& databasePath); 
