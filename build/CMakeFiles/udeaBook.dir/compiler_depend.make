@@ -80,6 +80,7 @@ CMakeFiles/udeaBook.dir/app/plataform.cpp.obj: C:/SoftwareCoding/Projects/udeaBo
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cstddef \
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cstdio \
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cstdlib \
+  C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/ctime \
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cwchar \
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cwctype \
   C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/debug/assertions.h \
@@ -173,6 +174,7 @@ CMakeFiles/udeaBook.dir/app/plataform.cpp.obj: C:/SoftwareCoding/Projects/udeaBo
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/list/FriendList.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequest.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequestHandler.h \
+  C:/SoftwareCoding/Projects/udeaBook/app/user/friends/suggestions/suggestions.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/Gallery.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/album.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/gallery.h \
@@ -2359,6 +2361,7 @@ CMakeFiles/udeaBook.dir/main.cpp.obj: C:/SoftwareCoding/Projects/udeaBook/main.c
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/list/FriendList.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequest.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/friends/requests/FriendRequestHandler.h \
+  C:/SoftwareCoding/Projects/udeaBook/app/user/friends/suggestions/suggestions.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/Gallery.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/album.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/images/gallery.h \
@@ -2366,7 +2369,6 @@ CMakeFiles/udeaBook.dir/main.cpp.obj: C:/SoftwareCoding/Projects/udeaBook/main.c
   C:/SoftwareCoding/Projects/udeaBook/app/user/messages/MessageHandling.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/messages/message.h \
   C:/SoftwareCoding/Projects/udeaBook/app/user/user.h \
-  C:/SoftwareCoding/Projects/udeaBook/databases/fileManager.h \
   C:/SoftwareCoding/Projects/udeaBook/tools/listTemplate.h \
   C:/SoftwareCoding/Projects/udeaBook/tools/str.h
 
@@ -3033,8 +3035,6 @@ C:/SoftwareCoding/Projects/udeaBook/tools/str.cpp:
 
 C:/SoftwareCoding/Projects/udeaBook/tools/efficiency.cpp:
 
-C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/ctime:
-
 C:/SoftwareCoding/Projects/udeaBook/tools/console.cpp:
 
 C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/bits/codecvt.h:
@@ -3354,6 +3354,8 @@ C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/pthread_time.h:
 C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr.h:
 
 C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/cstddef:
+
+C:/SoftwareCoding/IDEs/Compilers/msys64/ucrt64/include/c++/16.2.0/ctime:
 
 C:/SoftwareCoding/Projects/udeaBook/app/user/messages/message.cpp:
 

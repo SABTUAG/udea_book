@@ -37,6 +37,7 @@ public:
 
     bool addImage(const Image& image);
     bool removeImage(const Image& image);
+    void carrusel(); 
 
     /**
      * @brief Verifica si una imagen pertenece al álbum.

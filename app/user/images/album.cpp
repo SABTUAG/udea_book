@@ -1,4 +1,5 @@
 #include "Album.h"
+#include "console.h"
 
 Album::Album(
     const str& name, 
@@ -63,6 +64,41 @@ bool Album::addImage(const Image& image){
 }
 bool Album::removeImage(const Image& image){
     return _images.remove(image);
+}
+void Album::carrusel() {
+    if (_images.getLen() == 0){
+        std::cout<<"El album "<<getName()<<" esta vacio.\n";
+        return;
+    }
+    int currentPhotoIndex  = 0;
+    bool running = true;
+    while (running) {
+        Image& img = _images[currentPhotoIndex];
+        std::cout << "\n--- Foto " << currentPhotoIndex  + 1 << " de " << _images.getLen() << " ---\n";
+        std::cout << "Ruta:  " << img.getFilePath() << "\n";
+        std::cout << "Fecha: " << img.getPublicationDate() << "\n";
+        std::cout << "Likes: " << img.getLikes() << "\n";
+        
+        // Usamos tu inputChar (Mucho más limpio que inputStr)
+        char c = Console::inputChar(
+            "\n[s]iguiente, [a]nterior, [l]ike, [q]uit: ", 
+            "sSalLqQ"
+        );
+        
+        if (c=='s'||c=='S') {
+            currentPhotoIndex  = (currentPhotoIndex  + 1) % _images.getLen();
+        } 
+        else if (c == 'a' || c == 'A') {
+            currentPhotoIndex  = (currentPhotoIndex  - 1 + _images.getLen()) % _images.getLen();
+        } 
+        else if (c == 'l' || c == 'L') {
+            img.addLike();
+            std::cout << "-> Te gusta esta foto! (Likes actuales: " << img.getLikes() << ")\n";
+        } 
+        else if (c == 'q' || c == 'Q') {
+            running = false;
+        }
+    }
 }
 
 

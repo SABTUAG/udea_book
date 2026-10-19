@@ -2,13 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 
-Plataform::Plataform(const str& databasePath): 
-    _currentUser(nullptr), 
-    _profilePicsUpdated(false)
-{
-    srand(time(0)); // Semilla para aleatorios
-    loadUsers(databasePath); 
-}
 
 void Plataform::loadUsers(const str& database){
     List<str> blocks; 
@@ -20,32 +13,6 @@ void Plataform::loadUsers(const str& database){
         }
     ); 
 }
-
-bool Plataform::loginUser(){
-    std::cout<<"** Iniciar sesion **"<<std::endl;
-    bool validUser = false;  
-    while(!validUser){
-        str nameID=Console::inputStr(
-            "Usuario: ", 
-            "abcdefghijklmnopqrstuvwxyz0123456789", 
-            50
-        );
-        _currentUser = findUserByName(nameID); 
-        if (_currentUser == nullptr){
-            std::cout<<"Usuario no encontrado"<<std::endl; 
-        }
-    }
-    str pass=Console::inputStr(
-        "Contrasena: ", 
-        "abcdefghijklmnopqrstuvwxyz0123456789", 
-        50
-    );
-    if (_currentUser->getPassword() != pass) {
-        std::cout<<"Contrasena incorrecta.\n";
-    } 
-    return true; 
-}
-
 User* Plataform::findUserByName(const str& nameID){
     User* found = nullptr;
     _users.forEach(
@@ -55,36 +22,47 @@ User* Plataform::findUserByName(const str& nameID){
     );
     return found;
 }
+bool Plataform::loginUser() {
+    std::cout<<"** Iniciar sesion **\n";
+    str nameID=Console::inputStr(
+        "Usuario: ",
+        "abcdefghijklmnopqrstuvwxyz0123456789",
+        50
+    );
+    User* user=findUserByName(nameID);
+    if (user==nullptr){
+        std::cout<<"Usuario no encontrado.\n";
+        return false;
+    }
+    str pass = Console::inputStr(
+        "Contrasena: ",
+        "abcdefghijklmnopqrstuvwxyz0123456789",
+        50
+    );
+    if (user->getPassword()!=pass) {
+        std::cout<<"Contrasena incorrecta.\n";
+        return false;
+    }
+    _currentUser=user;
+    return true;
+}
+
+
+Plataform::Plataform(const str& databasePath): 
+    _currentUser(nullptr), 
+    _profilePicsUpdated(false)
+{
+    srand(time(0)); 
+    loadUsers(databasePath); 
+}
+
 
 // ==========================================
 // MENÚ PRINCIPAL (LOGIN Y BUCLE)
 // ==========================================
 void Plataform::start() {
-    std::cout << "** INGRESAR A UDEABOOK **\n";
-    str name = Console::inputStr(
-        "Usuario: ", 
-        "abcdefghijklmnopqrstuvwxyz0123456789", 
-        50
-    );
+    if (!loginUser()) return;
     
-    _currentUser = findUserByName(name);
-    if (_currentUser == nullptr) {
-        std::cout<<"Usuario no encontrado.\n";
-        return;
-    }
-
-    // Validar contraseña (asumiendo que User tiene getPassword o checkPassword)
-    str pass=Console::inputStr(
-        "Contrasena: ", 
-        "abcdefghijklmnopqrstuvwxyz0123456789", 
-        50
-    );
-    // NOTA: Si tu User no tiene getPassword(), deberás agregarlo.
-    if (_currentUser->getPassword() != pass) {
-        std::cout<<"Contrasena incorrecta.\n";
-        return;
-    }
-
     // Funcionalidad II: Mostrar 3 fotos de amigos
     mostrarFotosPerfil();
     int option = 0;
@@ -98,7 +76,7 @@ void Plataform::start() {
         std::cout << "7. Cerrar sesion\n";
         option = Console::inputInt("Opcion: ", 1, 7);
         switch (option) {
-            case 1: menuAmistades(); break;
+            case 1: FriendShipManagementMenu(); break;
             case 2: visitarPerfil(); break;
             case 3: menuSugerencias(); break;
             case 4: menuMensajes(); break;
@@ -127,11 +105,9 @@ void Plataform::mostrarFotosPerfil() {
         return;
     }
 
-    std::cout<<"\n--- Fotos de perfil de tus amigos ---\n";
     int mostrados = 0;
-    
     // Algoritmo de selección aleatoria con peso basado en AMIGOS EN COMÚN
-    for (int i = 0; (i<numFriends) && (mostrados<3); i++) {
+    for (int i=0; (i<numFriends) && (mostrados<3); i++) {
         User* amigo = findUserByName(friends[i]);
         if (amigo){
             // 1. Calcular amigos en común reales
@@ -170,7 +146,7 @@ void Plataform::mostrarFotosPerfil() {
 // ==========================================
 // FUNCIONALIDAD III: ADMINISTRAR AMISTADES
 // ==========================================
-void Plataform::menuAmistades() {
+void Plataform::FriendShipManagementMenu() {
     Efficiency::reset();
     int opt = 0;
     while (opt != 3) {
@@ -181,13 +157,13 @@ void Plataform::menuAmistades() {
             str targetName = Console::inputStr("Nombre de usuario a invitar: ", "abcdefghijklmnopqrstuvwxyz0123456789", 50);
             User* target = findUserByName(targetName);
             
-            if (!target || target->getNameID() == _currentUser->getNameID()) {
+            if (!target || target->getNameID() == _currentUser->getNameID()){
                 std::cout << "Usuario invalido.\n"; continue;
             }
-            if (_currentUser->getFriends().getFriends().contains(targetName)) {
+            if (_currentUser->getFriends().getFriends().contains(targetName)){
                 std::cout << "Ya son amigos.\n"; continue;
             }
-            if (_currentUser->getFriends().getRequests().hasReceivedFrom(targetName)) {
+            if (_currentUser->getFriends().getRequests().hasReceivedFrom(targetName)){
                 std::cout << "Ese usuario ya te envio una solicitud. Aceptala.\n"; continue;
             }
 
@@ -207,13 +183,17 @@ void Plataform::menuAmistades() {
             str senderName = reqs.getAt(index - 1).getSender();
             
             // Hacerlos amigos mutuamente
-            _currentUser->getFriends().getFriends().add(senderName);
+            _currentUser->getFriends()
+            .getFriends()
+            .add(senderName);
             User* sender = findUserByName(senderName);
-            if (sender) sender->getFriends().getFriends().add(_currentUser->getNameID());
+            if (sender) sender->getFriends()
+            .getFriends()
+            .add(_currentUser->getNameID());
 
             // Borrar solicitud
             reqs.remove(senderName);
-            std::cout << "Ahora eres amigo de " << senderName << "!\n";
+            std::cout<<"Ahora eres amigo de "<<senderName<< "!\n";
         }
     }
     Efficiency::showMetrics("Administrar Amistades");

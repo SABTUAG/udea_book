@@ -19,7 +19,8 @@ Realice una lectura comprensiva del texto del desafío empleando un código de c
 
 
 También subrayó los flujos de ejecución esperados de cada funcionalidad específica. Luego hago un diagrama en papel sobre todo esto y saco mis conclusiones sobre lo que se me esta pidiendo. 
-[Mirar PDF con imagenes de este proceso](#)
+Identifique que hay una clase principal **usuario**, compuesta por multiples elementos(posibles clases y sus atributos) dentro de una clase **plataforma** que le permite la interacción con otros usuarios. 
+[Mirar PDF (Drive)](https://docs.google.com/document/d/16gyP_rgqqiGxrQm-Qu636G1EwM30HxNljUp-neo5HoA/edit?usp=sharing)
 
 
 ### A. ANÁLISIS DEL PROBLEMA Y CONSIDERACIONES PARA LA ALTERNATIVA DE SOLUCIÓN PROPUESTA. 
@@ -67,7 +68,7 @@ e. Un modulo encargado del acceso a los archivos, su lectura y modificación. (S
 
 ### C. ALGORITMOS ESENCIALES CONSTRUIDOS
 
-...
+[Mirar PDF(drive)](https://docs.google.com/document/d/15Kp4xDi7ScfjX4YkAWpPnFD3HdD15GEhZWZ9ao62Aqg/edit?usp=sharing)
 
 
 ### D. PROBLEMAS DE DESARROLLO QUE AFRONTE
